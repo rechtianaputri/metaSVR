@@ -1,13 +1,20 @@
 Package: metaSVR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Using Metaheuristic Algorithm to Get Optimum Parameters: 
+      Cost, Gamma, and Epsilon on SVR
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Rechtiana Putri Arini 
+Maintainer: rparini17@gmail.com
+Description: Package for performing SVR on the data with use of 
+              metaheuristic algorithms. The use of metaheuristic 
+              algorithm is to optimize the parameter so it can get 
+              better evaluation.Metaheuristic classification used in
+              this package are: Coot Bird Optimization (CBO), Archimedes 
+              Optimization (AO), and Combined Archimedes with Coot Bird
+              Optimization Algorithm (AOCBO).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/rechtianaputri/metaSVR
 BugReports: https://github.com/rechtianaputri/metaSVR/issues
+RoxygenNote: 7.3.1
