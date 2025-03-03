@@ -1,7 +1,6 @@
 Package: metaSVR
 Type: Package
-Title: Using Metaheuristic Algorithm to Get Optimum Parameters: 
-      Cost, Gamma, and Epsilon on SVR
+Title: Hybrid Support Vector Regression with Metaheuristic Optimization
 Version: 0.1.0
 Author: Rechtiana Putri Arini 
 Maintainer: Rechtiana <rparini17@gmail.com>
@@ -12,6 +11,10 @@ Description: Package for performing SVR on the data with use of
               this package are: Coot Bird Optimization (CBO), Archimedes 
               Optimization (AO), and Combined Archimedes with Coot Bird
               Optimization Algorithm (AOCBO).
+Imports:
+    e1071,
+    stats,
+    utils
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
