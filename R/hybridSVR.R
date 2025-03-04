@@ -1,3 +1,8 @@
+#' @importFrom stats na.omit
+#' @importFrom e1071 svm
+#' @importFrom stats predict
+
+#' @export
 svrHybrid <- function(x_train, y_train,
                       x_test, y_test,
                       kernel = "radial", optimizer = "AO",
@@ -15,11 +20,11 @@ svrHybrid <- function(x_train, y_train,
   set.seed(seed)
 
   bounds <- get_default_bounds()
-  lb <- bounds$lb
-  ub <- bounds$ub
-  dim <- bounds$dim
+  batas_bawah <- matrix(bounds$lb, nrow = 1)
+  batas_atas <- matrix(bounds$ub, nrow = 1)
+  dimensi <- bounds$dim
 
-  fobj <- function(params) {
+  fun <- function(params) {
     cost <- params[1]
     gamma <- params[2]
     epsilon <- params[3]
@@ -37,7 +42,7 @@ svrHybrid <- function(x_train, y_train,
       actuals <- y_test
     }
 
-    calculate_loss(actuals, preds, objective)
+    loss_calculate(actuals, preds, objective)
   }
 
   optimizer_func <- switch(optimizer,
@@ -45,7 +50,8 @@ svrHybrid <- function(x_train, y_train,
                            "CBO" = CBO,
                            "AOCBO" = AOCBO)
 
-  result <- optimizer_func(N = N, Max_iter = max_iter, lb, ub, dim, obj)
+  result <- optimizer_func(N = N, Max_iter = max_iter, lb=batas_bawah, ub = batas_atas,
+                           dim = dimensi, fobj=fun)
 
   best_params <- list(cost = result$best_position[1],
                       gamma = result$best_position[2],
@@ -72,7 +78,7 @@ svrHybrid <- function(x_train, y_train,
   # Return hasil
   list(
     best_params = best_params,
-    total_iter = result$total_iter,
+    total_iter = result$jml_iter,
     iter_history = result$iter_history,
     model = svr_final
   )

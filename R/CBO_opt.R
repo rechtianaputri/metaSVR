@@ -1,3 +1,5 @@
+#' @importFrom stats runif
+
 initCBO <- function(N,dim,ub,lb){
   if (ncol(ub)==1) {
     X<- matrix(runif(N*dim),N,dim) * (ub - lb) + lb
@@ -21,7 +23,7 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   # Constant initCBOialization
   nLeader <- ceiling(0.1*N)
   nCoot <- N-nLeader
-  smape <- matrix(0L, nrow= Max_iter, ncol= 1)
+  objective_history <- matrix(0L, nrow= Max_iter, ncol= 1)
   param_list <<- matrix(0L, nrow = 1, ncol=Max_iter)
   param <- NULL
   gBest <- matrix(0L, nrow = 1, ncol= dim)

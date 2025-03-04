@@ -13,8 +13,7 @@ Description: Package for performing SVR on the data with use of
               Optimization Algorithm (AOCBO).
 Imports:
     e1071,
-    stats,
-    utils
+    stats
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

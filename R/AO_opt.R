@@ -1,3 +1,5 @@
+#' @importFrom stats runif
+
 AO <- function(N, Max_iter, lb, ub, dim, fobj) {
   # Initialization
   C1 <- 2
