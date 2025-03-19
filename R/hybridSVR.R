@@ -6,7 +6,7 @@
 svrHybrid <- function(x_train, y_train,
                       x_test, y_test,
                       kernel = "radial", optimizer = "AO",
-                      objective = "RMSE", is.y.normalize = TRUE,
+                      objective = "RMSE", is.y.normalize = FALSE,
                       min.y = min.y, max.y = max.y,
                       max_iter = 100, N = 30,
                       seed = 123, degree = 3, coef0 = 0,
