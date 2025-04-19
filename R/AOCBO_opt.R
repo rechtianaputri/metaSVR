@@ -14,18 +14,18 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
   objective_history <- numeric(Max_iter)
   #param_list <- matrix(0, nrow = Max_iter, ncol = 1)  # Fix: Make sure it's initialized correctly
   param <- matrix(0, nrow = Max_iter, ncol = dim)  # Fix: Ensure param is properly initialized
-  param_list <- numeric(Max_iter)  # Inisialisasi sebagai vektor #NOTED
+  param_list <- numeric(Max_iter)  # param initialized as vector
   Xbest <- matrix(0, nrow = 1, ncol = dim)
   Scorebest <- Inf
 
   # Initial positions (Eq. 4)
-  # Buat X dengan benar sesuai dengan N dan dim
+  # Make X as it N and dim
   X <- matrix(0, nrow = N, ncol = dim)
-  # Inisialisasi nilai X secara acak berdasarkan lb dan ub
+  # Random initialized X based on lb and ub
   for (i in 1:N) {
     for (j in 1:dim) {
       X[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])
-      #X[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)  # Batas bawah minimum
+      #X[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)  # lb minimum
     }
   }
 
@@ -34,12 +34,13 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
   vol <- matrix(runif(N * dim), nrow = N, ncol = dim)
   #acc <- matrix(lb + runif(N * dim) * (ub - lb), nrow = N, ncol = dim) # Eq. 6
 
-  # Inisialisasi acc dengan benar sesuai dimensi lb dan ub
+  # Initialized acc match with the dimention of lb and ub
+
   acc <- matrix(0, nrow = N, ncol = dim) # Initialize acc with correct size
   for (i in 1:N) {
     for (j in 1:dim) {
-      acc[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])  # Setiap elemen sesuai dengan lb dan ub
-      #acc[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)  # Batas bawah minimum
+      acc[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])  # generate every element based on lb and ub
+      #acc[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)  # lb minimum
     }
   }
 
@@ -68,7 +69,7 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
 
   # Looping for every population_size
   while (t < Max_iter) {
-    # Proses Eksplorasi Awal CBO with Leader Selection menggunakan Xbest yang telah diinisialisasi sebelumnya
+    # Early exploration on CBO with Leader Selection using Xbest that has been initialized before
     B<- 2-t/Max_iter
     for (i in 1:N) {
       if (runif(1)<0.5){
@@ -104,7 +105,7 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
     }
 
     # Proses Archimedes Optimization
-    Xbest_CBO <- Xbest # Ambil Xbest dari eksplorasi awal
+    Xbest_CBO <- Xbest # use Xbest ftom early exploration
     den_best_CBO <- den_best
     vol_best_CBO <- vol_best
     acc_best_CBO <- acc_best
@@ -128,10 +129,10 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
       den[i, ] <- den[i, ] + runif(1) * (den_best_CBO - den[i, ])
       vol[i, ] <- vol[i, ] + runif(1) * (vol_best_CBO - vol[i, ])
 
-      if (TF <= 0.5) { # Collision (Eq. 10), fase eksplorasi AO
+      if (TF <= 0.5) { # Collision (Eq. 10), AO exploration phase
         mr <- sample(1:N, 1)
         acc_temp[i, ] <- (den[mr, ] + (vol[mr, ] * acc[mr, ])) / (runif(1) * den[i, ] * vol[i, ])
-      } else { # Eq. 11, fase eksploitasi AO
+      } else { # Eq. 11, AO exploitation phase
         acc_temp[i, ] <- (den_best_CBO + (vol_best_CBO * acc_best_CBO)) / (runif(1) * den[i, ] * vol[i, ])
       }
     }
@@ -140,7 +141,7 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
     if (max(acc_temp) != min(acc_temp)) {
       acc_norm <- ((u * (acc_temp - min(acc_temp))) / (max(acc_temp) - min(acc_temp))) + l
     } else {
-      acc_norm <- matrix(l, nrow = N, ncol = dim) # Default value jika rentang nol
+      acc_norm <- matrix(l, nrow = N, ncol = dim) # default value if the range is 0
     }
 
     # Fase update position
@@ -150,7 +151,7 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
         for (j in 1:dim) {
           mrand <- sample(1:N, 1)
           Xnew[i, j] <- X[i, j] + C1 * runif(1) * acc_norm[i, j] * (X[mrand, j] - X[i, j]) * d # Eq. 13
-          # Pastikan nilai Xnew berada dalam rentang [lb[j], ub[j]] -> NOTED
+          # Xnew is on [lb[j], ub[j]] range
           Xnew[i, j] <- max(min(Xnew[i, j], ub[j]), lb[j])
         }
       } else {
@@ -162,14 +163,14 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
           }
 
           if (p <= 0.5) { # Update position if not collision (exploitation phase)
-            # Jika p <0.5 maka F=1
+            # if p <0.5 so F=1
             Xnew[i, j] <- Xbest_CBO[j] + C2 * runif(1) * acc_norm[i, j] * (T * Xbest_CBO[j] - X[i, j]) * d # Eq. 14
           } else {
-            # Jika p >= 0.5 maka F = -1
+            # if p >= 0.5 so F = -1
             Xnew[i, j] <- Xbest_CBO[j] - C2 * runif(1) * acc_norm[i, j] * (T * Xbest_CBO[j] - X[i, j]) * d # Eq. 14
           }
           # check boundary
-          Xnew[i, j] <- max(min(Xnew[i, j], ub[j]), lb[j]) # Tidak melebihi batas atas, dan tidak kurang batas bawah
+          Xnew[i, j] <- max(min(Xnew[i, j], ub[j]), lb[j]) # make sure in range of lb and ub
         }
       }
     }

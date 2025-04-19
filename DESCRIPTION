@@ -9,13 +9,17 @@ Description: Package for performing SVR on the data with use of
               algorithm is to optimize the parameter so it can get 
               better evaluation.Metaheuristic classification used in
               this package are: Coot Bird Optimization (CBO), Archimedes 
-              Optimization (AO), and Combined Archimedes with Coot Bird
-              Optimization Algorithm (AOCBO).
+              Optimization (AO), Combined Archimedes with Coot Bird
+              Optimization Algorithm (AOCBO), Harris Hawks Optimization (HHO),
+              Ant Lion Optimization (ALO), Gray Wolf Optimizer (GWO), and 
+              Enhanced Harris Hawk Optimization with Coot Bird Optimization
+              (EHHOCBO)
 Imports:
     e1071,
     stats,
     dplyr,
-    readxl
+    readxl,
+    hms
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

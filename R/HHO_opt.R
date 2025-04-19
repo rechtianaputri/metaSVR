@@ -31,7 +31,8 @@ HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
   rab_en <- Inf
   X <- initHHO(N,dim,ub,lb)
   param_list <- matrix(0L, nrow = 1, ncol=Max_iter)
-  smape <- matrix(0L, nrow = Max_iter, ncol= 1)
+  objective_history <- matrix(0L, nrow= Max_iter, ncol= 1)
+  #smape <- matrix(0L, nrow = Max_iter, ncol= 1)
   param <- NULL
   t<-0
   bound <- 0
@@ -125,15 +126,13 @@ HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
     }
 
     t<- t+1
-    smape[t,] <- rab_en
+    objective_history[t,] <- rab_en
     param <- c(param, rab_loc)
     param_list[t] <- rab_en
+    cat("At iteration", t, "the best fitness is", rab_en,"\n")
 
-    if (mod(t,1) == 0) {
-      cat("At iteration", t, "the best fitness is", rab_en,"\n")
-    }
     if (t> 1) {
-      if (smape[t-1,]-rab_en <= 0.00001 & smape[t-1,]-rab_en >= 0) {
+      if (t > 1 && objective_history[t-1]-rab_en <= 0.00001 && objective_history[t-1]-rab_en >= 0) {
         bound <-bound + 1
       } else {
         bound <- 0

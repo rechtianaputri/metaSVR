@@ -46,7 +46,7 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
 
   # Check for NA values in initial positions
   if (any(is.na(cootPos)) || any(is.na(leaderPos))) {
-    print("Nilai inisialisasi cootPos atau leaderPos mengandung NA!")
+    print("Initialization value of cootPos or leaderPos contain NA!")
   }
 
   #cootPos <- initCBO(nCoot,dim,ub,lb)

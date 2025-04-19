@@ -1,6 +1,7 @@
 #' @importFrom stats na.omit
 #' @importFrom e1071 svm
 #' @importFrom stats predict
+#' @importFrom hms as_hms
 
 #' @export
 svrHybrid <- function(x_train, y_train,
@@ -17,12 +18,14 @@ svrHybrid <- function(x_train, y_train,
                       fitted = TRUE, ..., subset,
                       na.action = na.omit) {
 
+  start <- Sys.time()
+
   set.seed(seed)
 
   bounds <- get_default_bounds()
-  batas_bawah <- matrix(bounds$lb, nrow = 1)
-  batas_atas <- matrix(bounds$ub, nrow = 1)
-  dimensi <- bounds$dim
+  lower_bound <- matrix(bounds$lb, nrow = 1)
+  upper_bound <- matrix(bounds$ub, nrow = 1)
+  dimension <- bounds$dim
 
   fun <- function(params) {
     cost <- params[1]
@@ -48,17 +51,21 @@ svrHybrid <- function(x_train, y_train,
   optimizer_func <- switch(optimizer,
                            "AO" = AO,
                            "CBO" = CBO,
-                           "AOCBO" = AOCBO)
+                           "AOCBO" = AOCBO,
+                           "HHO" = HHO,
+                           "GWO" = GWO,
+                           "ALO" = ALO,
+                           "EHHOCBO" = EHHOCBO)
 
-  result <- optimizer_func(N = N, Max_iter = max_iter, lb=batas_bawah, ub = batas_atas,
-                           dim = dimensi, fobj=fun)
+  result <- optimizer_func(N = N, Max_iter = max_iter, lb=lower_bound, ub = upper_bound,
+                           dim = dimension, fobj=fun)
 
   best_params <- list(cost = result$best_position[1],
                       gamma = result$best_position[2],
                       epsilon = result$best_position[3])
 
-  # Setelah best_params didapat
-  # Bangun SVR final
+  # after best_params earned
+  # build the final SVR
   svr_final <- svm(
     x = x_train,
     y = y_train,
@@ -75,11 +82,14 @@ svrHybrid <- function(x_train, y_train,
     subset = subset, na.action = na.action
   )
 
-  # Return hasil
+  finish <- Sys.time()
+
+  # Return result
   list(
     best_params = best_params,
     total_iter = result$jml_iter,
     iter_history = result$iter_history,
-    model = svr_final
+    model = svr_final,
+    time = as_hms(difftime(finish,start))
   )
 }

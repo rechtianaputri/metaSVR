@@ -11,26 +11,25 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
 
   # Initialize tracking variables
   #smape <- matrix(0, nrow = Max_iter, ncol = 1)
-  objective_history <- numeric(Max_iter) # penghitungan fobj
+  objective_history <- numeric(Max_iter) # calculate fobj
   #param_list <- matrix(0, nrow = Max_iter, ncol = 1)  # Fix: Make sure it's initialized correctly
   param <- matrix(0, nrow = Max_iter, ncol = dim)  # Fix: Ensure param is properly initialized
-  param_list <- numeric(Max_iter)  # Inisialisasi sebagai vektor #NOTED
+  param_list <- numeric(Max_iter)  # initialize as vector
   Xbest <- matrix(0, nrow = 1, ncol = dim)
   Scorebest <- Inf
 
   # Initial positions (Eq. 4)
-  # Debug: Cek perhitungan N * dim
-  print("Cek perhitungan N * dim:")
+  print("Check the calculation of N * dim:")
   print(N * dim)
 
   # Initial positions (Eq. 4)
-  # Buat X dengan benar sesuai dengan N dan dim
+  # matrix X generated based on N and dim
   X <- matrix(0, nrow = N, ncol = dim)
-  # Inisialisasi nilai X secara acak berdasarkan lb dan ub
+  # Randomly initialize X based on lb and ub
   for (i in 1:N) {
     for (j in 1:dim) {
       X[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])
-      #X[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)  # Batas bawah minimum
+      #X[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)
     }
   }
 
@@ -39,12 +38,12 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
   vol <- matrix(runif(N * dim), nrow = N, ncol = dim)
   #acc <- matrix(lb + runif(N * dim) * (ub - lb), nrow = N, ncol = dim) # Eq. 6
 
-  # Inisialisasi acc dengan benar sesuai dimensi lb dan ub
+  # Initialize acc based on lb and ub dimention
   acc <- matrix(0, nrow = N, ncol = dim) # Initialize acc with correct size
   for (i in 1:N) {
     for (j in 1:dim) {
-      acc[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])  # Setiap elemen sesuai dengan lb dan ub
-      #acc[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)  # Batas bawah minimum
+      acc[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])  # every element based on lb and ub
+      #acc[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)
     }
   }
 
@@ -107,14 +106,14 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
       acc_norm <- matrix(l, nrow = N, ncol = dim) # Default value jika rentang nol
     }
 
-    # Fase update position
+      # Update position phase
     Xnew <- matrix(0, nrow = N, ncol = dim)
     for (i in 1:N) {
       if (TF <= 0.5) { # Update position for exploration phase
         for (j in 1:dim) {
           mrand <- sample(1:N, 1)
           Xnew[i, j] <- X[i, j] + C1 * runif(1) * acc_norm[i, j] * (X[mrand, j] - X[i, j]) * d # Eq. 13
-          # Pastikan nilai Xnew berada dalam rentang [lb[j], ub[j]] -> NOTED
+          # Make sure that Xnew on range [lb[j], ub[j]]
           Xnew[i, j] <- max(min(Xnew[i, j], ub[j]), lb[j])
         }
       } else {
@@ -126,14 +125,14 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
           }
 
           if (p <= 0.5) { # Update position if not collision (exploitation phase)
-            # Jika p <0.5 maka F=1
+            # if p <0.5 so F=1
             Xnew[i, j] <- Xbest[j] + C2 * runif(1) * acc_norm[i, j] * (T * Xbest[j] - X[i, j]) * d # Eq. 14
           } else {
-            # Jika p >= 0.5 maka F = -1
+            # if p >= 0.5 so F = -1
             Xnew[i, j] <- Xbest[j] - C2 * runif(1) * acc_norm[i, j] * (T * Xbest[j] - X[i, j]) * d # Eq. 14
           }
           # check boundary
-          Xnew[i, j] <- max(min(Xnew[i, j], ub[j]), lb[j]) # Tidak melebihi batas atas, dan tidak kurang batas bawah
+          Xnew[i, j] <- max(min(Xnew[i, j], ub[j]), lb[j]) # on the range of ub and lb
         }
       }
     }
@@ -152,12 +151,11 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
       Scorebest <- var_Ybest
       Score_index <- var_index
       Xbest <- X[var_index, ]
-      #Xbest <- pmax(X[var_index, ], 1e-5) #NOTED
+      #Xbest <- pmax(X[var_index, ], 1e-5)
       den_best <- den[Score_index, ]
       vol_best <- vol[Score_index, ]
       acc_best <- acc_norm[Score_index, ]
-      # Pastikan nilai parameter selalu lebih besar dari 0
-      #param[t, ] <- pmax(Xbest, 1e-5) ## NOTED
+      #param[t, ] <- pmax(Xbest, 1e-5)
     }
 
     # Update tracking variables
@@ -176,9 +174,9 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
     t=t+ 1
   }
 
-  # Pastikan variabel valid sebelum dikembalikan
+  # Make sure return variable is valid
   if (is.null(Scorebest) || is.null(Xbest)) {
-    stop("Scorebest atau Xbest tidak valid.")
+    stop("Scorebest or Xbest isn't valid.")
   }
 
   # Final results
