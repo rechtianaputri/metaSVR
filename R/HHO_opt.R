@@ -15,6 +15,8 @@ initHHO <- function(N,dim,ub,lb){
   return(X)
 }
 
+#' @importFrom stats rnorm
+
 levyHHO <- function(d) {
   beta <- 1.5
   sigma <- ((gamma(1+beta)*sin(pi*beta/2))/(gamma((1+beta)/2)*beta*

@@ -1,3 +1,13 @@
+
+
+#' @param N
+#'
+#' @param Max_iter
+#' @param lb
+#' @param ub
+#' @param dim
+#' @param fobj
+#'
 #' @importFrom stats runif
 
 AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {

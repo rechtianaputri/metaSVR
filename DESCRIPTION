@@ -4,16 +4,15 @@ Title: Hybrid Support Vector Regression with Metaheuristic Optimization
 Version: 0.1.0
 Author: Rechtiana Putri Arini 
 Maintainer: Rechtiana <rparini17@gmail.com>
-Description: Package for performing SVR on the data with use of 
-              metaheuristic algorithms. The use of metaheuristic 
-              algorithm is to optimize the parameter so it can get 
-              better evaluation.Metaheuristic classification used in
-              this package are: Coot Bird Optimization (CBO), Archimedes 
-              Optimization (AO), Combined Archimedes with Coot Bird
-              Optimization Algorithm (AOCBO), Harris Hawks Optimization (HHO),
-              Ant Lion Optimization (ALO), Gray Wolf Optimizer (GWO), and 
-              Enhanced Harris Hawk Optimization with Coot Bird Optimization
-              (EHHOCBO)
+Description: This package provides hybrid of SVR with several metaheuristic 
+              algorithms. The use of metaheuristic algorithm is to optimize 
+              the parameter of Cost, Gamma, and Epsilon so it can get better evaluation. 
+              Metaheuristic classification used in this package are: 
+              Coot Bird Optimization (CBO), Archimedes Optimization (AO), 
+              Combined Archimedes Optimization with Coot Bird Optimization (AOCBO), 
+              Harris Hawks Optimization (HHO), Gray Wolf Optimizer (GWO), 
+              Ant Lion Optimization (ALO), and  Enhanced Harris Hawk Optimization 
+              with Coot Bird Optimization (EHHOCBO)
 Imports:
     e1071,
     stats,
