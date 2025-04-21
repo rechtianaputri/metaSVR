@@ -1,8 +1,42 @@
-#' @export
+#' Normalize
+#'
+#' Normalize data using min-max scale.
+#'
+#' @param x is a predictor variable that is a numeric vector to be normalized.
+#'
+#' @return A numeric vector scaled between 0 and 1.
+#'
+#' @examples
+#' # Normalize example use:
+#' data <- c(10, 20, 30, 40, 50)
+#' normalize(data)
+#'
+#'@export
 normalize <- function(x) {
   return((x - min(x)) / (max(x) - min(x)))
 }
 
+#' Denormalize
+#'
+#' Convert normalized data back to original scale using given min and max.
+#'
+#' @param x Numeric vector that has been normalized (values is between 0 and 1).
+#' @param min The minimum value of the original data.
+#' @param max The maximum value of the original data.
+#'
+#' @return A numeric vector already converted to original scale.
+#'
+#' @examples
+#' # Example of the original data
+#' original_data <- c(10, 20, 30, 40, 50)
+#'
+#' # Data being normalized
+#' normalized_data <- (original_data - min(original_data)) /
+#'                    (max(original_data) - min(original_data))
+#'
+#' # Denormalization function use to change value to the original
+#' denormalize(normalized_data, min(original_data), max(original_data))
+#'
 #' @export
 denormalize <- function(x,min,max){
   return((x * (max-min)) + min)

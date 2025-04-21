@@ -3,6 +3,35 @@
 #' @importFrom stats predict
 #' @importFrom hms as_hms
 
+#' @param x_train
+#'
+#' @param y_train
+#' @param x_test
+#' @param y_test
+#' @param kernel
+#' @param optimizer
+#' @param objective
+#' @param is.y.normalize
+#' @param min.y
+#' @param max.y
+#' @param max_iter
+#' @param N
+#' @param seed
+#' @param degree
+#' @param coef0
+#' @param nu
+#' @param class.weights
+#' @param cachesize
+#' @param tolerance
+#' @param scale
+#' @param shrinking
+#' @param cross
+#' @param probability
+#' @param fitted
+#' @param ...
+#' @param subset
+#' @param na.action
+#'
 #' @export
 svrHybrid <- function(x_train, y_train,
                       x_test, y_test,
