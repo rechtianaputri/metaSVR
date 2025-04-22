@@ -105,7 +105,7 @@ A list containing:
 Trains a Support vector Regression Model by optimizing its parameter (Cost, Gamma, and Epsilon)
 using Metaheuristic Algorithms such as: Archimedes Optimization (AO), Coot Bird Optimization (CBO),
 Combined Archimedes Optimization with Coot Bird Optimization (AOCBO),
-Harris Hawks Optimization (HHO), Gray Wolf Optimizer (GWO), Ant Lion Optimization (ALO),
+Harris Hawks Optimization (HHO), Grey Wolf Optimizer (GWO), Ant Lion Optimization (ALO),
 and Enhanced Harris Hawks Optimization with Coot Bird Optimization (EHHOCBO).
 }
 \examples{

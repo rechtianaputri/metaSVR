@@ -1,3 +1,17 @@
+#' Initialize Position on Ant Lion Optimizer
+#'
+#' kurang
+#'
+#' @param N An integer indicate population size.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#'
+#' @return A numeric matrix of shape \code{(N, dim)} representing initialized positions.
+#'
+#' @note
+#' This function used inside ALO function for initialization process.
+#'
 #' @importFrom stats runif
 
 initALO <- function(N,dim,ub,lb){
@@ -15,6 +29,17 @@ initALO <- function(N,dim,ub,lb){
   }
   return(X)
 }
+
+#' Title
+#'
+#' @param dim
+#' @param Max_iter
+#' @param lb
+#' @param ub
+#' @param antlion
+#' @param current_iter
+#'
+#' @return
 
 Random_walk_around_antlion <- function(dim, Max_iter, lb, ub, antlion, current_iter){
   if (nrow(lb) == 1 & ncol(lb) == 1) {
@@ -74,6 +99,12 @@ Random_walk_around_antlion <- function(dim, Max_iter, lb, ub, antlion, current_i
   return(RWs)
 }
 
+#' Title
+#'
+#' @param weights
+#'
+#' @return
+
 RouletteWheelSelection <- function(weights){
   accumulation <- sum(weights)
   p<- runif(1) %*% accumulation[length(accumulation)]
@@ -87,6 +118,43 @@ RouletteWheelSelection <- function(weights){
   choice <- chosen_index
   return(choice)
 }
+
+#' Ant Lion Optimizer
+#'
+#' kurang
+#'
+#' @param N An integer indicate population size.
+#' @param Max_iter An integer indicate maximum number of iterations.
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param fobj An objective function used to be minimized. It is return single numeric value that show evaluation matrix result in every iteration.
+#' It used to calculate the best fitness in every iteration.
+#'
+#' @return A list containing:
+#' \describe{
+#'   \item{best_fitness}{The best (minimum) fitness value found.}
+#'   \item{best_position}{The parameter vector (position) corresponding to the best fitness.}
+#'   \item{jml_iter}{The number of iterations executed.}
+#'   \item{param}{Matrix of best parameters found across every iterations (dim × iter).}
+#'   \item{param_list}{Vector of best fitness values at each iteration.}
+#' }
+#'
+#' @details
+#' kurang
+#'
+#' The algorithm performs until maximum iteration reached or convergence condition when the difference
+#' in objective values for ten consecutive times is less than 10^-5.
+#'
+#' @note
+#' The input vectors 'lb' and 'ub' must have the same length as the number of dimensions 'dim'.
+#'
+#' This optimization function used inside svrHybrid function.
+#'
+#' @references
+#' Mirjalili, S. (2015). The ant lion optimizer. Advances in engineering software, 83, 80-98.
+#' https://doi.org/10.1016/j.advengsoft.2015.01.010
+#'
 
 ALO <- function(N, Max_iter, lb, ub, dim, fobj){
   antlion_position <- initALO(N,dim,ub,lb)

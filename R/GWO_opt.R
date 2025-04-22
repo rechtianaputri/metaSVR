@@ -1,4 +1,4 @@
-#' Initialize Position on Gray Wolf Optimizer
+#' Initialize Position on Grey Wolf Optimizer
 #'
 #' This function generates the initial position of gray wolf within the defined upper and lower bound in every dimension.
 #'
@@ -30,18 +30,45 @@ initGWO <- function(N,dim,ub,lb) {
   return(X)
 }
 
-#' Title
+#' Grey Wolf Optimizer
 #'
-#' @param N
-#' @param Max_iter
-#' @param lb
-#' @param ub
-#' @param dim
-#' @param fobj
+#' An algorithm built by Mirjalili et al. (2014) inspired by leadership hierarchy and hunting mechanism of
+#' grey wolves in nature to optimized real-valued objective function in continous search space in a population-based manner.
 #'
-#' @return
+#' @param N An integer indicate population size.
+#' @param Max_iter An integer indicate maximum number of iterations.
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param fobj An objective function used to be minimized. It is return single numeric value that show evaluation matrix result in every iteration.
+#' It used to calculate the best fitness in every iteration.
 #'
-#' @examples
+#' @return A list containing:
+#' \describe{
+#'   \item{best_fitness}{The best (minimum) fitness value found.}
+#'   \item{best_position}{The parameter vector (position) corresponding to the best fitness.}
+#'   \item{jml_iter}{The number of iterations executed.}
+#'   \item{param}{Matrix of best parameters found across every iterations (dim × iter).}
+#'   \item{param_list}{Vector of best fitness values at each iteration.}
+#' }
+#'
+#' @details
+#' This algorithm proposed social hierarchy on GWO to obtain the best fitness and get the best proposed hunting method to locate
+#' probable position of the pray. Adaptive values on alpha and A make it possible smooth transition between exploration and exploitation phase.
+#'
+#' The algorithm performs until maximum iteration reached or convergence condition when the difference
+#' in objective values for ten consecutive times is less than 10^-5.
+#'
+#' @note
+#' The input vectors 'lb' and 'ub' must have the same length as the number of dimensions 'dim'.
+#'
+#' This optimization function used inside svrHybrid function.
+#'
+#' @references
+#' Mirjalili, S., Mirjalili, S. M., & Lewis, A. (2014). Grey wolf optimizer.
+#' Advances in engineering software, 69, 46-61. https://doi.org/10.1016/j.advengsoft.2013.12.007
+#'
+
 GWO <- function(N,Max_iter,lb,ub,dim,fobj) {
   alpha_pos <- matrix(0, nrow= 1, ncol= dim)
   alpha_score <- Inf

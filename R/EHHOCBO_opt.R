@@ -1,3 +1,17 @@
+#' Initialize Position on Enhanced Harris Hawks Optimization with Coot Bird Optimization
+#'
+#' This function generates the initial position of agents (X) within the defined upper and lower bound in every dimension.
+#'
+#' @param N An integer indicate population size.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#'
+#' @return A numeric matrix of shape \code{(N, dim)} representing initialized positions.
+#'
+#' @note
+#' This function used inside EHHOCBO function for initialization process.
+#'
 #' @importFrom stats runif
 
 initEHHOCBO <- function(N, dim, ub,lb){
@@ -16,16 +30,33 @@ initEHHOCBO <- function(N, dim, ub,lb){
 }
 
 
-levyEHHOCBO <- function(d) {
+#' Title
+#'
+#' @param dim
+#'
+#' @return
+
+levyEHHOCBO <- function(dim) {
   beta <- 1.5
   sigma <- ((gamma(1 + beta) * sin(pi*beta/2))
             /(gamma((1+beta)/2)*beta*2^((beta-1)/2)))^(1/beta)
-  u <- runif(d)*sigma
-  v <- runif(d)
+  u <- runif(dim)*sigma
+  v <- runif(dim)
   step <-u/(abs(v)^(1/beta))
   o <- step
   return(o)
 }
+
+#' Title
+#'
+#' @param N
+#' @param Max_iter
+#' @param lb
+#' @param ub
+#' @param dim
+#' @param fobj
+#'
+#' @return
 
 EHHOCBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   rab_loc <- matrix(0L, nrow = 1, ncol= dim)

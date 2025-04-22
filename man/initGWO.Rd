@@ -2,7 +2,7 @@
 % Please edit documentation in R/GWO_opt.R
 \name{initGWO}
 \alias{initGWO}
-\title{Initialize Position on Gray Wolf Optimizer}
+\title{Initialize Position on Grey Wolf Optimizer}
 \usage{
 initGWO(N, dim, ub, lb)
 }

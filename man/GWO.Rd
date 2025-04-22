@@ -2,13 +2,51 @@
 % Please edit documentation in R/GWO_opt.R
 \name{GWO}
 \alias{GWO}
-\title{Title}
+\title{Grey Wolf Optimizer}
 \usage{
 GWO(N, Max_iter, lb, ub, dim, fobj)
 }
 \arguments{
-\item{fobj}{}
+\item{N}{An integer indicate population size.}
+
+\item{Max_iter}{An integer indicate maximum number of iterations.}
+
+\item{lb}{A numeric vector that show lower bounds of the search space. One value per dimension.}
+
+\item{ub}{A numeric vector that show upper bounds of the search space. One value per dimension.}
+
+\item{dim}{An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.}
+
+\item{fobj}{An objective function used to be minimized. It is return single numeric value that show evaluation matrix result in every iteration.
+It used to calculate the best fitness in every iteration.}
+}
+\value{
+A list containing:
+\describe{
+  \item{best_fitness}{The best (minimum) fitness value found.}
+  \item{best_position}{The parameter vector (position) corresponding to the best fitness.}
+  \item{jml_iter}{The number of iterations executed.}
+  \item{param}{Matrix of best parameters found across every iterations (dim × iter).}
+  \item{param_list}{Vector of best fitness values at each iteration.}
+}
 }
 \description{
-Title
+An algorithm built by Mirjalili et al. (2014) inspired by leadership hierarchy and hunting mechanism of
+grey wolves in nature to optimized real-valued objective function in continous search space in a population-based manner.
+}
+\details{
+This algorithm proposed social hierarchy on GWO to obtain the best fitness and get the best proposed hunting method to locate
+probable position of the pray. Adaptive values on alpha and A make it possible smooth transition between exploration and exploitation phase.
+
+The algorithm performs until maximum iteration reached or convergence condition when the difference
+in objective values for ten consecutive times is less than 10^-5.
+}
+\note{
+The input vectors 'lb' and 'ub' must have the same length as the number of dimensions 'dim'.
+
+This optimization function used inside svrHybrid function.
+}
+\references{
+Mirjalili, S., Mirjalili, S. M., & Lewis, A. (2014). Grey wolf optimizer.
+Advances in engineering software, 69, 46-61. https://doi.org/10.1016/j.advengsoft.2013.12.007
 }
