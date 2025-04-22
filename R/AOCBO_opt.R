@@ -1,14 +1,39 @@
-
-
-#' @param N
+#' Combined Archimedes Optimization with Coot Bird Optimization
 #'
-#' @param Max_iter
-#' @param lb
-#' @param ub
-#' @param dim
-#' @param fobj
+#' A hybrid metaheuristic algorithm that combines Archimedes Optimization (AO) with
+#' Coot Bird Optimization (CBO) to optimized real-valued objective function in continuous search space.
 #'
 #' @importFrom stats runif
+#'
+#' @param N An integer indicate population size.
+#' @param Max_iter An integer indicate maximum number of iterations.
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate
+#' the number of parameters to be optimized.
+#' @param fobj An objective function used to be minimized. It is return single numeric value that show
+#' evaluation matrix result in every iteration. It used to calculate the best fitness in every iteration.
+#'
+#' @return A list containing:
+#' \describe{
+#'   \item{best_fitness}{The best (minimum) fitness value found.}
+#'   \item{best_position}{The parameter vector (position) corresponding to the best fitness.}
+#'   \item{jml_iter}{The number of iterations executed.}
+#'   \item{param}{Matrix of best parameters found across every iterations (dim × iter).}
+#'   \item{param_list}{Vector of best fitness values at each iteration.}
+#' }
+#'
+#' @details
+#' This metaheuristic implement combination of all step of Archimedes Optimization with first step used after initialization
+#' is Coot Leader selection stage in CBO as early exploration step.
+#' The hybrid design enhances convergence and stability in optimization step so it can maximize the best parameter.
+#'
+#' The algorithm performs until maximum iteration reached or convergence condition when the difference in objective
+#' values for ten consecutive times is less than 10^-5.
+#'
+#'@note The input vectors `lb` and `ub` must have the same length as the number of dimensions `dim`.
+#'@note This optimization function used inside svrHybrid function.
+
 
 AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
   # Initialization

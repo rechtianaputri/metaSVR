@@ -1,3 +1,45 @@
+#' Archimedes Optimization
+#'
+#' An algorithm built by Hashim et al. (2021) use buoyancy law and fluid dynamics behavior
+#' in Archimedes principle to optimized real-valued objective function in continous search space
+#' in a population-based manner.
+#'
+#' @param N An integer indicate population size.
+#' @param Max_iter An integer indicate maximum number of iterations.
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param fobj An objective function used to be minimized. It is return single numeric value that show evaluation matrix result in every iteration.
+#' It used to calculate the best fitness in every iteration.
+#'
+#' @return A list containing:
+#' \describe{
+#'   \item{best_fitness}{The best (minimum) fitness value found.}
+#'   \item{best_position}{The parameter vector (position) corresponding to the best fitness.}
+#'   \item{jml_iter}{The number of iterations executed.}
+#'   \item{param}{Matrix of best parameters found across every iterations (dim × iter).}
+#'   \item{param_list}{Vector of best fitness values at each iteration.}
+#' }
+#'
+#' @details
+#' This algorithm uses population-based search to conduct physical law such as volume, density difference, and acceleration in every iteration.
+#' It balancing the exploration and exploitation phase by using Transfer Function (TF) as a shifting indicates.
+#'
+#' The algorithm performs until maximum iteration reached or convergence condition when the difference
+#' in objective values for ten consecutive times is less than 10^-5.
+#'
+#' @note
+#' The input vectors 'lb' and 'ub' must have the same length as the number of dimensions 'dim'.
+#'
+#' This optimization function used inside svrHybrid function.
+#'
+#' Constant of C3 = 1 and C4 = 2 used in basic standard optimization function.
+#'
+#' @references
+#' Hashim, F. A., Hussain, K., Houssein, E. H., Mabrouk, M. S., & Al-Atabany, W. (2021).
+#' Archimedes Optimization Algorithm: A New Metaheuristic Algorithm for Solving Optimization Problems.
+#' Applied Intelligence, 51(3), 1531–1551. https://doi.org/10.1007/s10489-020-01893-z
+#'
 #' @importFrom stats runif
 
 AO <- function(N, Max_iter, lb, ub, dim, fobj) {

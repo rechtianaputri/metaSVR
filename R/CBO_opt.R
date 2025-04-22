@@ -1,3 +1,17 @@
+#' Initialize Position on Coot Bird Optimization
+#'
+#' This function generates the initial position of leaders and coots within the defined upper and lower bound in every dimension.
+#'
+#' @param N An integer indicate population size.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#'
+#' @return A numeric matrix of shape \code{(N, dim)} representing initialized positions.
+#'
+#' @note
+#' This function used inside CBO function for initialization process.
+#'
 #' @importFrom stats runif
 
 initCBO <- function(N,dim,ub,lb){
@@ -14,6 +28,46 @@ initCBO <- function(N,dim,ub,lb){
   }
   return(X)
 }
+
+#' Coot Bird Optimization
+#'
+#' An algorithm built by Naruei & Keynia (2021) that mimics the regular-irregular movement behaviour of
+#' Coot birds. Its population divided by two groups as leaders to guide the process and coots to follow leaders and randomly explore search space.
+#' This movement use to  optimized real-valued objective function in continuous search space.
+#'
+#' @param N An integer indicate population size.
+#' @param Max_iter An integer indicate maximum number of iterations.
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param fobj An objective function used to be minimized. It is return single numeric value that show evaluation matrix result in every iteration.
+#' It used to calculate the best fitness in every iteration.
+#'
+#' @return A list containing:
+#' \describe{
+#'   \item{best_fitness}{The best (minimum) fitness value found.}
+#'   \item{best_position}{The parameter vector (position) corresponding to the best fitness.}
+#'   \item{jml_iter}{The number of iterations executed.}
+#'   \item{param}{Matrix of best parameters found across every iterations (dim × iter).}
+#'   \item{param_list}{Vector of best fitness values at each iteration.}
+#' }
+#'
+#' @details
+#' This algorithms used movement such as: random movement, chain movement, adjusting the position based on
+#' the group leaders, and leader movement to emphasize the exploration and exploitation phase to get the best fitness.
+#'
+#' The algorithm performs until maximum iteration reached or convergence condition when the difference
+#' in objective values for ten consecutive times is less than 10^-5.
+#'
+#' @note
+#' The input vectors 'lb' and 'ub' must have the same length as the number of dimensions 'dim'.
+#'
+#' This optimization function used inside svrHybrid function.
+#'
+#' @references
+#' Naruei, I., & Keynia, F. (2021). A New Optimization Method Based on COOT Bird Natural Life Model.
+#' Expert Systems with Applications, 183. https://doi.org/10.1016/j.eswa.2021.115352
+#'
 
 CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   if (ncol(ub) == 1) {

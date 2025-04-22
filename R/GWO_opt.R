@@ -1,3 +1,17 @@
+#' Initialize Position on Gray Wolf Optimizer
+#'
+#' This function generates the initial position of gray wolf within the defined upper and lower bound in every dimension.
+#'
+#' @param N An integer indicate population size.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#'
+#' @return A numeric matrix of shape \code{(N, dim)} representing initialized positions.
+#'
+#' @note
+#' This function used inside GWO function for initialization process.
+#'
 #' @importFrom stats runif
 
 initGWO <- function(N,dim,ub,lb) {
@@ -16,6 +30,18 @@ initGWO <- function(N,dim,ub,lb) {
   return(X)
 }
 
+#' Title
+#'
+#' @param N
+#' @param Max_iter
+#' @param lb
+#' @param ub
+#' @param dim
+#' @param fobj
+#'
+#' @return
+#'
+#' @examples
 GWO <- function(N,Max_iter,lb,ub,dim,fobj) {
   alpha_pos <- matrix(0, nrow= 1, ncol= dim)
   alpha_score <- Inf
