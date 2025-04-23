@@ -1,7 +1,7 @@
 #' Archimedes Optimization
 #'
 #' An algorithm built by Hashim et al. (2021) use buoyancy law and fluid dynamics behavior
-#' in Archimedes principle to optimized real-valued objective function in continous search space
+#' in Archimedes principle to optimized real-valued objective function in continuous search space
 #' in a population-based manner.
 #'
 #' @param N An integer indicate population size.

@@ -32,7 +32,7 @@ A list containing:
 }
 \description{
 An algorithm built by Mirjalili et al. (2014) inspired by leadership hierarchy and hunting mechanism of
-grey wolves in nature to optimized real-valued objective function in continous search space in a population-based manner.
+grey wolves in nature to optimized real-valued objective function in continuous search space in a population-based manner.
 }
 \details{
 This algorithm proposed social hierarchy on GWO to obtain the best fitness and get the best proposed hunting method to locate

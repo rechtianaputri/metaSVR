@@ -1,6 +1,6 @@
 #' Initialize Position on Enhanced Harris Hawks Optimization with Coot Bird Optimization
 #'
-#' This function generates the initial position of agents (X) within the defined upper and lower bound in every dimension.
+#' This function generates the initial position of all agents (X) within the defined upper and lower bound in every dimension.
 #'
 #' @param N An integer indicate population size.
 #' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
@@ -30,11 +30,16 @@ initEHHOCBO <- function(N, dim, ub,lb){
 }
 
 
-#' Title
+#' Levy Flight Generator
 #'
-#' @param dim
+#' Generates a random step vector based on Lévy flight distribution, used in the exploitation phase of HHO that used as combined in EHHOCBO.
 #'
-#' @return
+#' @param dim An integer that indicate the dimensionality of search space.
+#'
+#' @return A numeric vector of length \code{dim} representing the Lévy flight step.
+#'
+#' #' @note
+#' This function used inside EHHOCBO function to generate random Levy Flight vector.
 
 levyEHHOCBO <- function(dim) {
   beta <- 1.5
@@ -47,16 +52,43 @@ levyEHHOCBO <- function(dim) {
   return(o)
 }
 
-#' Title
+#' Enhanced Harris Hawks Optimization with Coot Bird Optimization
 #'
-#' @param N
-#' @param Max_iter
-#' @param lb
-#' @param ub
-#' @param dim
-#' @param fobj
+#' This function implements a hybrid metaheuristic optimization algorithm that combines Harris Hawks Optimization with leader selection of Coot Bird
+#' Optimization to optimized real-valued objective function in continuous search space in a population-based manner built by Cui et al. (2023).
 #'
-#' @return
+#' @param N An integer indicate population size.
+#' @param Max_iter An integer indicate maximum number of iterations.
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param fobj An objective function used to be minimized. It is return single numeric value that show evaluation matrix result in every iteration.
+#' It used to calculate the best fitness in every iteration.
+#'
+#' @return A list containing:
+#' \describe{
+#'   \item{best_fitness}{The best (minimum) fitness value found.}
+#'   \item{best_position}{The parameter vector (position) corresponding to the best fitness.}
+#'   \item{jml_iter}{The number of iterations executed.}
+#'   \item{param}{Matrix of best parameters found across every iterations (dim × iter).}
+#'   \item{param_list}{Vector of best fitness values at each iteration.}
+#' }
+#'
+#' @details
+#' This algorithm start by adding leadership mechanism of CBO into HHO process so it can make better foundation for the global search.
+#' Ensemble Mutation Strategy (EMS) to improve the exploration trend and population diversity also Refracted Opposition-Based Learning (ROBL)
+#' to update current optimal solution in the swarm added to enhanced the combination of HHO and CBO.
+#'
+#' The algorithm performs until maximum iteration reached or convergence condition when the difference
+#' in objective values for ten consecutive times is less than 10^-5.
+#'
+#' @note The input vectors `lb` and `ub` must have the same length as the number of dimensions `dim`.
+#' @note This optimization function used inside svrHybrid function.
+#'
+#' @references
+#' Cui, H., Guo, Y., Xiao, Y., Wang, Y., Li, J., Zhang, Y., & Zhang, H. (2023). Enhanced Harris Hawks Optimization Integrated with Coot Bird Optimization for
+#' Solving Continuous Numerical Optimization Problems. CMES - Computer Modeling in Engineering and Sciences, 137(2), 1635–1675. https://doi.org/10.32604/cmes.2023.026019
+#'
 
 EHHOCBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   rab_loc <- matrix(0L, nrow = 1, ncol= dim)

@@ -1,10 +1,10 @@
 #' Initialize Position on Ant Lion Optimizer
 #'
-#' kurang
+#' This function generates the initial position of antlions and ants within the defined upper and lower bound in every dimension.
 #'
 #' @param N An integer indicate population size.
 #' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
-#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
 #'
 #' @return A numeric matrix of shape \code{(N, dim)} representing initialized positions.
@@ -30,16 +30,22 @@ initALO <- function(N,dim,ub,lb){
   return(X)
 }
 
-#' Title
+#' Perform Random Walk Around Antlion
 #'
-#' @param dim
-#' @param Max_iter
-#' @param lb
-#' @param ub
-#' @param antlion
-#' @param current_iter
+#' Function simulates random walk of an ant within the boundaries influenced by an antlion's position.
 #'
-#' @return
+#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
+#' @param Max_iter An integer indicate maximum number of iterations.
+#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
+#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
+#' @param antlion A numeric vector representing the position of the selected antlion.
+#' @param current_iter The current iteration count.
+#'
+#' @return A numeric matrix of shape \code{(N, dim)} representing the position of the ant in each step of the random walk.
+#'
+#' @note
+#' This function used inside ALO function to update the position of ants.
+#'
 
 Random_walk_around_antlion <- function(dim, Max_iter, lb, ub, antlion, current_iter){
   if (nrow(lb) == 1 & ncol(lb) == 1) {
@@ -99,11 +105,17 @@ Random_walk_around_antlion <- function(dim, Max_iter, lb, ub, antlion, current_i
   return(RWs)
 }
 
-#' Title
+#' Roulette Wheel Selection
 #'
-#' @param weights
+#' Function used to select an individual index based on fitness-proportional selection (inverse fitness weight).
 #'
-#' @return
+#' @param weights A numeric vector of weights.
+#'
+#' @return An integer representing the selected index.
+#'
+#' @note
+#' This function used inside ALO function to probabilistically select antlions for guiding ants.
+#
 
 RouletteWheelSelection <- function(weights){
   accumulation <- sum(weights)
@@ -121,7 +133,8 @@ RouletteWheelSelection <- function(weights){
 
 #' Ant Lion Optimizer
 #'
-#' kurang
+#' An algorithm built by Mirjalili (2015) inspired by the hunting behaviour of antlion whose making pit trap for ant prey
+#' in order to optimized real-valued objective function in continuous search space in a population-based manner.
 #'
 #' @param N An integer indicate population size.
 #' @param Max_iter An integer indicate maximum number of iterations.
@@ -141,7 +154,8 @@ RouletteWheelSelection <- function(weights){
 #' }
 #'
 #' @details
-#' kurang
+#' The algorithm mimics the ALO hunting behaviour by simulating a stochastic search
+#' where ants move around randomly under the influence of selected antlions and an elite antlion.
 #'
 #' The algorithm performs until maximum iteration reached or convergence condition when the difference
 #' in objective values for ten consecutive times is less than 10^-5.
