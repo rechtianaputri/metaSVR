@@ -144,8 +144,6 @@ GWO <- function(N,Max_iter,lb,ub,dim,fobj) {
     con_curve[l] <- alpha_score
     param <- c(param, alpha_pos)
 
-    cat("At iteration", l+1, "the best fitness is", alpha_score,"\n")
-
     objective_history[l,] <- alpha_score
     if (l> 1) {
       if (objective_history[l-1,]-alpha_score <= 0.00001 & objective_history[l-1,]-alpha_score >= 0) {

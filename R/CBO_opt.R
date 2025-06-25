@@ -224,7 +224,6 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
     objective_history[l] <- gBestScore
     param_list[l] <- gBestScore
     param <- c(param, gBest)
-    cat("At iteration", l, "the best fitness is", gBestScore,"\n")
     if (objective_history[l-1,]-gBestScore <= 0.00001 & objective_history[l-1,]-gBestScore >= 0) {
       bound <- bound + 1
     } else {

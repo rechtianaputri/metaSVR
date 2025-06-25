@@ -195,7 +195,6 @@ HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
     objective_history[t,] <- rab_en
     param <- c(param, rab_loc)
     param_list[t] <- rab_en
-    cat("At iteration", t, "the best fitness is", rab_en,"\n")
 
     if (t> 1) {
       if (t > 1 && objective_history[t-1]-rab_en <= 0.00001 && objective_history[t-1]-rab_en >= 0) {

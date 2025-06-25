@@ -204,7 +204,6 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
     objective_history[t] <- Scorebest
     param_list[t] <- Scorebest
     param[t,] <- Xbest
-    cat("At iteration", t, "the best fitness is", Scorebest,"\n")
     if (t > 1 && objective_history[t-1]-Scorebest <= 0.00001 && objective_history[t-1]-Scorebest >= 0) {
       bound <- bound + 1
     } else {

@@ -244,7 +244,6 @@ ALO <- function(N, Max_iter, lb, ub, dim, fobj){
     Convergence_curve[Current_iter] <- Elite_antlion_fitness
     param <- c(param, Elite_antlion_position)
 
-    cat("At iteration", Current_iter,"the best fitness is",Elite_antlion_fitness,"\n")
 
     objective_history[Current_iter,] <- Elite_antlion_fitness
     if (Current_iter >2){

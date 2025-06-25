@@ -276,7 +276,7 @@ EHHOCBO <- function(N,Max_iter,lb,ub,dim,fobj) {
     param <- c(param, rab_loc)
     param_list[t] <- rab_en
     if (t %% 1 == 0) {
-      cat("At iteration", t, "the best fitness is", rab_en,"\n")
+      #cat("At iteration", t, "the best fitness is", rab_en,"\n")
     }
     if (t > 1) {
       if (objective_history[t-1,]-rab_en <= 0.00001 & objective_history[t-1,]-rab_en >= 0) {
