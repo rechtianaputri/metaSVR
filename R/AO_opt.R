@@ -194,8 +194,6 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
     param_list[t] <- Scorebest
     if (length(Xbest) == dim) {
       param[t, ] <- Xbest
-    } else {
-      warning(sprintf("Xbest at iteration %d has length %d instead of %d", t, length(Xbest), dim))
     }
     if (t > 1 && objective_history[t-1]-Scorebest <= 0.00001 && objective_history[t-1]-Scorebest >= 0) {
       bound <- bound + 1
@@ -206,11 +204,6 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
       break;
     }
     t=t+ 1
-  }
-
-  # Make sure return variable is valid
-  if (is.null(Scorebest) || is.null(Xbest)) {
-    stop("Scorebest or Xbest isn't valid.")
   }
 
   # Final results

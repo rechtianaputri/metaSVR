@@ -27,8 +27,6 @@ initALO <- function(N,dim,ub,lb){
       lb_i <- lb[i]
       X[, i] <- runif(N) * (ub_i - lb_i) + lb_i
     }
-  } else {
-    stop("Length of bounds 'ub' and 'lb' must be 1 or equal to 'dim'")
   }
 
   return(X)
@@ -54,10 +52,6 @@ initALO <- function(N,dim,ub,lb){
 Random_walk_around_antlion <- function(dim, Max_iter, lb, ub, antlion, current_iter){
   lb <- as.numeric(lb)
   ub <- as.numeric(ub)
-
-  if (length(lb) != dim | length(ub) != dim) {
-    stop("Length of 'lb' and 'ub' must match 'dim'")
-  }
 
   I<-1
   if (current_iter > Max_iter/10){

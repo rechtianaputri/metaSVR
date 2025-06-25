@@ -2,7 +2,7 @@ library(testthat)
 library(metaSVR)
 
 # Dummy predicted and actual values for objective function
-actuals <- runif(20, min = 50, max = 150)
+actuals <- runif(40, min = 10, max = 1000)
 preds_gen <- function(params) {
   # Prediction simulation based on parameter
   actuals + sin(seq_along(actuals)) * params[1] - log(1 + abs(params[2])) + params[3] * 0.1

@@ -64,13 +64,6 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
       cootPos[, i] <- runif(nCoot) * (ub[i] - lb[i]) + lb[i]
       leaderPos[, i] <- runif(nLeader) * (ub[i] - lb[i]) + lb[i]
     }
-  } else {
-    stop("Panjang 'ub' dan 'lb' harus 1 atau sama dengan nilai 'dim'")
-  }
-
-  # Check for NA values in initial positions
-  if (any(is.na(cootPos)) || any(is.na(leaderPos))) {
-    print("Initialization value of cootPos or leaderPos contain NA!")
   }
 
   cootFitness <- matrix(0L, nrow = 1, ncol=nCoot)
