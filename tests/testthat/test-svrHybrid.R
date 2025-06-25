@@ -10,7 +10,7 @@ test_that("svrHybrid returns expected structure", {
   y_test <- y[36:50]
 
   result <- svrHybrid(x_train, y_train, x_test, y_test,
-                      optimizer = "AOCBO", kernel = "radial",
+                      optimizer = "EHHOCBO", kernel = "radial",
                       objective = "SMAPE",
                       is.y.normalize = FALSE,
                       max_iter = 100, N = 10)

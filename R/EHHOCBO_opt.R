@@ -15,10 +15,9 @@
 #' @importFrom stats runif
 
 initEHHOCBO <- function(N, dim, ub,lb){
-  if (ncol(ub) == 1) {
+  if (length(ub) == 1) {
     X<- matrix(runif(N*dim),N,dim) * (ub - lb) + lb
-  }
-  if (ncol(ub)> 1) {
+  } else {
     X<- matrix(NA, nrow= N, ncol= dim)
     for (i in 1:dim){
       high <- ub[i]

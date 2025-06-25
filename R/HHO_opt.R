@@ -15,15 +15,14 @@
 #' @importFrom stats runif
 
 initHHO <- function(N,dim,ub,lb){
-  if (ncol(ub) == 1) {
-    X<- matrix(runif(N*dim),N,dim)*(ub-lb)+lb
-  }
-  if (ncol(ub) > 1) {
-    X<- matrix(NA, nrow=N, ncol=dim)
-    for (i in 1:dim) {
+  if (length(ub) == 1) {
+    X<- matrix(runif(N*dim),N,dim) * (ub - lb) + lb
+  } else {
+    X<- matrix(NA, nrow= N, ncol= dim)
+    for (i in 1:dim){
       high <- ub[i]
       low <- lb[i]
-      X[,i] <- matrix(runif(1*N),1,N)*(high-low)+low
+      X[,i] <- matrix(runif(1*N),1,N) * (high - low) + low
     }
   }
   return(X)
@@ -98,7 +97,6 @@ HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
   X <- initHHO(N,dim,ub,lb)
   param_list <- matrix(0L, nrow = 1, ncol=Max_iter)
   objective_history <- matrix(0L, nrow= Max_iter, ncol= 1)
-  #smape <- matrix(0L, nrow = Max_iter, ncol= 1)
   param <- NULL
   t<-0
   bound <- 0

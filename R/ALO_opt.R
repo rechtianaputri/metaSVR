@@ -15,18 +15,22 @@
 #' @importFrom stats runif
 
 initALO <- function(N,dim,ub,lb){
-  bound_no <- ncol(ub)
-  if (bound_no == 1){
-    X <- matrix(runif(N*dim),N,dim)* (ub-lb) + lb
-  }
-  if (bound_no > 1){
+  ub <- as.numeric(ub)
+  lb <- as.numeric(lb)
+
+  if (length(ub) == 1) {
+    X <- matrix(runif(N * dim), N, dim) * (ub - lb) + lb
+  } else if (length(ub) == dim) {
     X <- matrix(NA, nrow = N, ncol = dim)
-    for (i in 1:dim){
+    for (i in 1:dim) {
       ub_i <- ub[i]
       lb_i <- lb[i]
-      X[,i] <- matrix(runif(1*N), 1, N) * (ub_i - lb_i) + lb_i
+      X[, i] <- runif(N) * (ub_i - lb_i) + lb_i
     }
+  } else {
+    stop("Length of bounds 'ub' and 'lb' must be 1 or equal to 'dim'")
   }
+
   return(X)
 }
 
@@ -48,13 +52,11 @@ initALO <- function(N,dim,ub,lb){
 #'
 
 Random_walk_around_antlion <- function(dim, Max_iter, lb, ub, antlion, current_iter){
-  if (nrow(lb) == 1 & ncol(lb) == 1) {
-    lb <- matrix(1, 1, dim) %*% lb
-    ub <- matrix(1, 1, dim) %*% ub
-  }
-  if (nrow(lb)>ncol(lb)){
-    lb <- t(lb)
-    ub <- t(ub)
+  lb <- as.numeric(lb)
+  ub <- as.numeric(ub)
+
+  if (length(lb) != dim | length(ub) != dim) {
+    stop("Length of 'lb' and 'ub' must match 'dim'")
   }
 
   I<-1

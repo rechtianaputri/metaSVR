@@ -15,16 +15,17 @@
 #' @importFrom stats runif
 
 initCBO <- function(N,dim,ub,lb){
-  if (ncol(ub)==1) {
-    X<- matrix(runif(N*dim),N,dim) * (ub - lb) + lb
-  }
-  if (ncol(ub)> 1) {
-    X<- matrix(NA, nrow= N, ncol= dim)
+  if (length(ub) == 1 && length(lb) == 1) {
+    X <- matrix(runif(N * dim), N, dim) * (ub - lb) + lb
+  } else if (length(ub) == dim && length(lb) == dim) {
+    X <- matrix(NA, nrow= N, ncol= dim)
     for (i in 1:dim) {
       high <- ub[i]
       low <- lb[i]
-      X[,i] <- matrix(runif(1*N),1,N) * (high-low) + low
+      X[, i] <- runif(N) * (high - low) + low
     }
+  } else {
+    stop("Panjang 'ub' dan 'lb' harus 1 atau sama dengan 'dim'")
   }
   return(X)
 }
@@ -70,10 +71,11 @@ initCBO <- function(N,dim,ub,lb){
 #'
 
 CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
-  if (ncol(ub) == 1) {
-    ub <- matrix(ub, nrow= 1, ncol= dim)
-    lb <- matrix(lb, nrow = 1, ncol= dim)
+  if (length(ub) == 1 && length(lb) == 1) {
+    ub <- rep(ub, dim)
+    lb <- rep(lb, dim)
   }
+
   # Constant initCBOialization
   nLeader <- ceiling(0.1*N)
   nCoot <- N-nLeader
@@ -84,18 +86,18 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   gBestScore <- Inf
 
   # initCBOialize Coot and Leader position
-  if (ncol(ub)>1) {
-    cootPos <- matrix(0,nCoot,dim)
-    leaderPos <- matrix(0,nLeader,dim)
+  if (length(ub) == 1 && length(lb) == 1) {
+    cootPos <- matrix(runif(nCoot * dim), nCoot, dim) * (ub - lb) + lb
+    leaderPos <- matrix(runif(nLeader * dim), nLeader, dim) * (ub - lb) + lb
+  } else if (length(ub) == dim && length(lb) == dim) {
+    cootPos <- matrix(NA, nCoot, dim)
+    leaderPos <- matrix(NA, nLeader, dim)
     for (i in 1:dim) {
-      high <- ub[i]
-      low <- lb[i]
-      cootPos[,i] <- runif(nCoot)*(high-low)+low
-      leaderPos[,i] <- runif(nLeader)*(high-low)+low
+      cootPos[, i] <- runif(nCoot) * (ub[i] - lb[i]) + lb[i]
+      leaderPos[, i] <- runif(nLeader) * (ub[i] - lb[i]) + lb[i]
     }
   } else {
-    cootPos <- matrix(runif(nCoot*dim),nCoot,dim)*(ub-lb)+lb
-    leaderPos <- matrix(runif(nLeader*dim),nLeader,dim)*(ub-lb)+lb
+    stop("Panjang 'ub' dan 'lb' harus 1 atau sama dengan nilai 'dim'")
   }
 
   # Check for NA values in initial positions
