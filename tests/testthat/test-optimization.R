@@ -76,7 +76,7 @@ test_that("CBO optimizer minimizes MAPE loss", {
   # Fungsi objektif yang akan diminimasi
   objective_function <- function(params) {
     preds <- preds_gen(params)
-    loss_calculate(preds, actuals, "SMAPE")
+    loss_calculate(preds, actuals, "MAPE")
   }
 
   bounds <- get_default_bounds()

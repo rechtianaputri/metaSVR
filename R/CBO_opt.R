@@ -1,35 +1,3 @@
-#' Initialize Position on Coot Bird Optimization
-#'
-#' This function generates the initial position of leaders and coots within the defined upper and lower bound in every dimension.
-#'
-#' @param N An integer indicate population size.
-#' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
-#' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
-#' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
-#'
-#' @return A numeric matrix of shape \code{(N, dim)} representing initialized positions.
-#'
-#' @note
-#' This function used inside CBO function for initialization process.
-#'
-#' @importFrom stats runif
-
-initCBO <- function(N,dim,ub,lb){
-  if (length(ub) == 1 && length(lb) == 1) {
-    X <- matrix(runif(N * dim), N, dim) * (ub - lb) + lb
-  } else if (length(ub) == dim && length(lb) == dim) {
-    X <- matrix(NA, nrow= N, ncol= dim)
-    for (i in 1:dim) {
-      high <- ub[i]
-      low <- lb[i]
-      X[, i] <- runif(N) * (high - low) + low
-    }
-  } else {
-    stop("Panjang 'ub' dan 'lb' harus 1 atau sama dengan 'dim'")
-  }
-  return(X)
-}
-
 #' Coot Bird Optimization
 #'
 #' An algorithm built by Naruei & Keynia (2021) that mimics the regular-irregular movement behaviour of
@@ -76,7 +44,7 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
     lb <- rep(lb, dim)
   }
 
-  # Constant initCBOialization
+  # Constant initialization
   nLeader <- ceiling(0.1*N)
   nCoot <- N-nLeader
   objective_history <- matrix(0L, nrow= Max_iter, ncol= 1)
@@ -85,7 +53,7 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   gBest <- matrix(0L, nrow = 1, ncol= dim)
   gBestScore <- Inf
 
-  # initCBOialize Coot and Leader position
+  # initialize Coot and Leader position
   if (length(ub) == 1 && length(lb) == 1) {
     cootPos <- matrix(runif(nCoot * dim), nCoot, dim) * (ub - lb) + lb
     leaderPos <- matrix(runif(nLeader * dim), nLeader, dim) * (ub - lb) + lb
@@ -105,8 +73,6 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
     print("Initialization value of cootPos or leaderPos contain NA!")
   }
 
-  #cootPos <- initCBO(nCoot,dim,ub,lb)
-  #leaderPos <- initCBO(nLeader,dim.ub.lb)
   cootFitness <- matrix(0L, nrow = 1, ncol=nCoot)
   leaderFitness <- matrix(0L, nrow = 1, ncol=nLeader)
 
