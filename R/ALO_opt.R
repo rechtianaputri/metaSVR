@@ -195,7 +195,6 @@ ALO <- function(N, Max_iter, lb, ub, dim, fobj){
   Elite_antlion_fitness <- sorted_antlion_fitness[1]
   Convergence_curve[1] <- Elite_antlion_fitness
   param <- c(Elite_antlion_position)
-  cat("At iteration 1 the best fitness is", Elite_antlion_fitness,"\n")
 
   Current_iter <- 2
   objective_history <- matrix(0L, nrow = Max_iter, ncol = 1)

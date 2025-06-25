@@ -120,6 +120,11 @@ svrHybrid <- function(x_train, y_train,
   result <- optimizer_func(N = N, Max_iter = max_iter, lb=lower_bound, ub = upper_bound,
                            dim = dimension, fobj=fun)
 
+  if (length(result$best_position) != 3) {
+    stop("Optimasi gagal: panjang best_position tidak sama dengan 3. Saat ini: ",
+         length(result$best_position))
+  }
+
   best_params <- list(cost = result$best_position[1],
                       gamma = result$best_position[2],
                       epsilon = result$best_position[3])

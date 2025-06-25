@@ -45,12 +45,10 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
   l <- 0.1
 
   # Initialize tracking variables
-  #smape <- matrix(0, nrow = Max_iter, ncol = 1)
   objective_history <- numeric(Max_iter)
-  #param_list <- matrix(0, nrow = Max_iter, ncol = 1)  # Fix: Make sure it's initialized correctly
   param <- matrix(0, nrow = Max_iter, ncol = dim)  # Fix: Ensure param is properly initialized
   param_list <- numeric(Max_iter)  # param initialized as vector
-  Xbest <- matrix(0, nrow = 1, ncol = dim)
+  Xbest <- rep(0, dim)
   Scorebest <- Inf
 
   # Initial positions (Eq. 4)
@@ -60,14 +58,12 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
   for (i in 1:N) {
     for (j in 1:dim) {
       X[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])
-      #X[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)  # lb minimum
     }
   }
 
   # X <- matrix(lb + runif(N * dim) * (ub - lb), nrow = N, ncol = dim)
   den <- matrix(runif(N * dim), nrow = N, ncol = dim) # Eq. 5
   vol <- matrix(runif(N * dim), nrow = N, ncol = dim)
-  #acc <- matrix(lb + runif(N * dim) * (ub - lb), nrow = N, ncol = dim) # Eq. 6
 
   # Initialized acc match with the dimention of lb and ub
 
@@ -75,7 +71,6 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
   for (i in 1:N) {
     for (j in 1:dim) {
       acc[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])  # generate every element based on lb and ub
-      #acc[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)  # lb minimum
     }
   }
 
@@ -97,8 +92,9 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
   #NOTED
   objective_history[1] <- Scorebest
   param_list[1] <- Scorebest
-  param[1] <- Xbest
-  cat("At iteration 1 the best fitness is", Scorebest,"\n")
+  if (length(Xbest) == dim) {
+    param[1, ] <- Xbest
+  }
   t <- 2
   bound <- 0 # Initialize bound
 
@@ -223,7 +219,7 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
     if (var_Ybest < Scorebest) {
       Scorebest <- var_Ybest
       Score_index <- var_index
-      Xbest <- X[var_index, ]
+      Xbest <- X[Score_index, ]
       den_best <- den[Score_index, ]
       vol_best <- vol[Score_index, ]
       acc_best <- acc_norm[Score_index, ]
@@ -232,7 +228,11 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
     # Update tracking variables
     objective_history[t] <- Scorebest
     param_list[t] <- Scorebest
-    param[t,] <- Xbest
+    if (length(Xbest) == dim) {
+      param[t, ] <- Xbest
+    } else {
+      warning(sprintf("Xbest at iteration %d has length %d instead of %d", t, length(Xbest), dim))
+    }
 
     if (t > 1 && objective_history[t-1]-Scorebest <= 0.00001 && objective_history[t-1]-Scorebest >= 0) {
       bound <- bound + 1

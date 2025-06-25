@@ -128,7 +128,6 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   objective_history[1] <- gBestScore
   param_list[1] <- gBestScore
   param <- c(param, gBest)
-  cat("At iteration 1 the best fitness is", gBestScore,"\n")
   l=2
   bound <- 0
   while (l < Max_iter+1) { # MaX Iteration

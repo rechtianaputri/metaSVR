@@ -52,17 +52,11 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
   l <- 0.1
 
   # Initialize tracking variables
-  #smape <- matrix(0, nrow = Max_iter, ncol = 1)
   objective_history <- numeric(Max_iter) # calculate fobj
-  #param_list <- matrix(0, nrow = Max_iter, ncol = 1)  # Fix: Make sure it's initialized correctly
   param <- matrix(0, nrow = Max_iter, ncol = dim)  # Fix: Ensure param is properly initialized
   param_list <- numeric(Max_iter)  # initialize as vector
-  Xbest <- matrix(0, nrow = 1, ncol = dim)
+  Xbest <- rep(0, dim)
   Scorebest <- Inf
-
-  # Initial positions (Eq. 4)
-  print("Check the calculation of N * dim:")
-  print(N * dim)
 
   # Initial positions (Eq. 4)
   # matrix X generated based on N and dim
@@ -71,21 +65,18 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
   for (i in 1:N) {
     for (j in 1:dim) {
       X[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])
-      #X[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)
     }
   }
 
   # X <- matrix(lb + runif(N * dim) * (ub - lb), nrow = N, ncol = dim)
   den <- matrix(runif(N * dim), nrow = N, ncol = dim) # Eq. 5
   vol <- matrix(runif(N * dim), nrow = N, ncol = dim)
-  #acc <- matrix(lb + runif(N * dim) * (ub - lb), nrow = N, ncol = dim) # Eq. 6
 
   # Initialize acc based on lb and ub dimention
   acc <- matrix(0, nrow = N, ncol = dim) # Initialize acc with correct size
   for (i in 1:N) {
     for (j in 1:dim) {
       acc[i, j] <- lb[j] + runif(1) * (ub[j] - lb[j])  # every element based on lb and ub
-      #acc[i, j] <- max(lb[j] + runif(1) * (ub[j] - lb[j]), 1e-5)
     }
   }
 
@@ -99,7 +90,6 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
   Scorebest <- min(Y)
   Score_index <- which.min(Y)
   Xbest <- X[Score_index, ]
-  #Xbest <- pmax(X[Score_index, ], 1e-5) #NOTED
   den_best <- den[Score_index, ]
   vol_best <- vol[Score_index, ]
   acc_best <- acc[Score_index, ]
@@ -108,8 +98,9 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
   #NOTED
   objective_history[1] <- Scorebest
   param_list[1] <- Scorebest
-  param[1] <- Xbest
-  cat("At iteration 1 the best fitness is", Scorebest,"\n")
+  if (length(Xbest) == dim) {
+    param[1, ] <- Xbest
+  }
   t <- 2
   bound <- 0 # Initialize bound
 
@@ -192,18 +183,20 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
     if (var_Ybest < Scorebest) {
       Scorebest <- var_Ybest
       Score_index <- var_index
-      Xbest <- X[var_index, ]
-      #Xbest <- pmax(X[var_index, ], 1e-5)
+      Xbest <- X[Score_index, ]
       den_best <- den[Score_index, ]
       vol_best <- vol[Score_index, ]
       acc_best <- acc_norm[Score_index, ]
-      #param[t, ] <- pmax(Xbest, 1e-5)
     }
 
     # Update tracking variables
     objective_history[t] <- Scorebest
     param_list[t] <- Scorebest
-    param[t,] <- Xbest
+    if (length(Xbest) == dim) {
+      param[t, ] <- Xbest
+    } else {
+      warning(sprintf("Xbest at iteration %d has length %d instead of %d", t, length(Xbest), dim))
+    }
     if (t > 1 && objective_history[t-1]-Scorebest <= 0.00001 && objective_history[t-1]-Scorebest >= 0) {
       bound <- bound + 1
     } else {
