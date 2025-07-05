@@ -114,3 +114,26 @@ Vector Regression with Metaheuristic Algorithms Optimization. R package
 version 0.1.0. <https://github.com/rechtianaputri/metaSVR>.
 
 ## References
+
+- Setiawan, I. N., Kurniawan, R., Yuniarto, B., Caraka, R. E., &
+  Pardamean, B. (2021). Parameter Optimization of Support Vector
+  Regression Using Harris Hawks Optimization. Procedia Computer Science,
+  196, 175–182.
+- Mirjalili, S. (2015). The Ant Lion Optimizer. Advances in Engineering
+  Software, 83, 80-98.
+- Hashim, F. A., Hussain, K., Houssein, E. H., Mabrouk, M. S., &
+  Al-Atabany, W. (2021). Archimedes Optimization Algorithm: A New
+  Metaheuristic Algorithm for Solving Optimization Problems. Applied
+  Intelligence, 51(3), 1531–1551.
+- Naruei, I., & Keynia, F. (2021). A New Optimization Method Based on
+  COOT Bird Natural Life Model. Expert Systems with Applications, 183.
+- Cui, H., Guo, Y., Xiao, Y., Wang, Y., Li, J., Zhang, Y., & Zhang, H.
+  (2023). Enhanced Harris Hawks Optimization Integrated with Coot Bird
+  Optimization for Solving Continuous Numerical Optimization Problems.
+  CMES - Computer Modeling in Engineering and Sciences, 137(2),
+  1635–1675.
+- Mirjalili, S., Mirjalili, S. M., & Lewis, A. (2014). Grey wolf
+  optimizer. Advances in engineering software, 69, 46-61.
+- Heidari, A. A., Mirjalili, S., Faris, H., Aljarah, I., Mafarja, M., &
+  Chen, H. (2019). Harris hawks optimization: Algorithm and
+  applications. Future generation computer systems, 97, 849-872.

@@ -162,8 +162,8 @@ RouletteWheelSelection <- function(weights){
 #' This optimization function used inside svrHybrid function.
 #'
 #' @references
-#' Mirjalili, S. (2015). The ant lion optimizer. Advances in engineering software, 83, 80-98.
-#' https://doi.org/10.1016/j.advengsoft.2015.01.010
+#' Mirjalili, S. (2015). The Ant Lion Optimizer. Advances in Engineering Software, 83, 80-98.
+#' https://doi.org/10.1016/j.advengsoft.2015.01.010.
 #'
 
 ALO <- function(N, Max_iter, lb, ub, dim, fobj){
