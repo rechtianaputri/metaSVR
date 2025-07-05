@@ -8,18 +8,18 @@
 
 metaSVR is an R Package to integrates Support Vector Regression (SVR)
 with various metaheuristic algorithms for automated hyperparameter
-tuning which is: Cost, Gamma, and Epsilon.
+tuning which is: `cost`, `gamma`, and `epsilon`.
 
-This package can be used to do prediction using SVR for small dataset
-and to do task where required optimal performance, such as forecasting
-renewable energy production, forecasting air pollutant, or modelling any
-regression that involve nonlinear patterns.
+This package can be used to do prediction using SVR for either small or
+big dataset and to do task where required optimal performance, such as
+forecasting renewable energy production, forecasting air pollutant, or
+modelling any regression that involve nonlinear patterns.
 
 ## Features
 
 Features provided in this package include:
 
-- Hybrid of SVR with several metaheuristic algorithms such as:
+- Hybrid of SVR with several **metaheuristic algorithms** such as:
   - Archimedes Optimization (AO)
   - Coot Bird Optimization (CBO)
   - Combined Archimedes Optimization with Coot Bird Optimization (AOCBO)
@@ -36,6 +36,14 @@ Features provided in this package include:
   denormalization
 - Outputs include best parameter set, iteration history, time used, and
   evaluation metrics
+
+## Dependencies
+
+Features provided in this package include:
+
+- **e1071** (for Support Vector Regression Modelling and Kernel)
+- **stats** (for prediction and generate random number)
+- **hms** (for calculating optimization duration)
 
 ## Installation
 
@@ -86,3 +94,45 @@ files:
 ?AOCBO
 ?loss_calculate
 ```
+
+You can also check the full manual on:
+<https://s.stis.ac.id/dokumentasi-metaSVR>.
+
+## Authors and Contributors
+
+This package was developed by:
+
+- Rechtiana Putri Arini
+- Robert Kurniawan
+
+## Citation
+
+If you use this package in your research, please cite using:
+
+``` r
+citation("metaSVR")
+#> Warning in citation("metaSVR"): no date field in DESCRIPTION file of package
+#> 'metaSVR'
+#> 
+#> To cite package 'metaSVR' in publications use:
+#> 
+#>   Arini RP, Kurniawan R (2025). _metaSVR: Hybrid Support Vector
+#>   Regression with Metaheuristic Optimization_. R package version 0.1.0,
+#>   <https://github.com/rechtianaputri/metaSVR>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {metaSVR: Hybrid Support Vector Regression with Metaheuristic Optimization},
+#>     author = {Rechtiana Putri Arini and Robert Kurniawan},
+#>     year = {2025},
+#>     note = {R package version 0.1.0},
+#>     url = {https://github.com/rechtianaputri/metaSVR},
+#>   }
+#> 
+#> ATTENTION: This citation information has been auto-generated from the
+#> package DESCRIPTION file and may need manual editing, see
+#> 'help("citation")'.
+```
+
+## References
