@@ -24,3 +24,4 @@ This function generates the initial position of antlions and ants within the def
 \note{
 This function used inside ALO function for initialization process.
 }
+\keyword{internal}

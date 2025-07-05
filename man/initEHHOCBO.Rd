@@ -24,3 +24,4 @@ This function generates the initial position of all agents (X) within the define
 \note{
 This function used inside EHHOCBO function for initialization process.
 }
+\keyword{internal}

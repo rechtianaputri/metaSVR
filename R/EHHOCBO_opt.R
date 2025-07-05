@@ -58,7 +58,6 @@ levyEHHOCBO <- function(dim) {
 #' This function implements a hybrid metaheuristic optimization algorithm that combines Harris Hawks Optimization with leader selection of Coot Bird
 #' Optimization to optimized real-valued objective function in continuous search space in a population-based manner built by Cui et al. (2023).
 #'
-#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param Max_iter An integer indicate maximum number of iterations.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.

@@ -18,3 +18,4 @@ Function used to select an individual index based on fitness-proportional select
 \note{
 This function used inside ALO function to probabilistically select antlions for guiding ants.
 }
+\keyword{internal}

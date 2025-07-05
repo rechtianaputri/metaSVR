@@ -18,3 +18,4 @@ Generates a random step vector based on Lévy flight distribution, used in the e
 \note{
 This function used inside HHO function to generate random Levy Flight vector.
 }
+\keyword{internal}

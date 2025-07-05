@@ -24,3 +24,4 @@ This function generates the initial position of gray wolf within the defined upp
 \note{
 This function used inside GWO function for initialization process.
 }
+\keyword{internal}

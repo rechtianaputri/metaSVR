@@ -34,7 +34,6 @@ initGWO <- function(N,dim,ub,lb) {
 #' An algorithm built by Mirjalili et al. (2014) inspired by leadership hierarchy and hunting mechanism of
 #' grey wolves in nature to optimized real-valued objective function in continuous search space in a population-based manner.
 #'
-#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param Max_iter An integer indicate maximum number of iterations.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.

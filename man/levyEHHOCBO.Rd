@@ -18,3 +18,4 @@ This function used inside EHHOCBO function to generate random Levy Flight vector
 \description{
 Generates a random step vector based on Lévy flight distribution, used in the exploitation phase of HHO that used as combined in EHHOCBO.
 }
+\keyword{internal}

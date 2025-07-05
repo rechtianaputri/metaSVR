@@ -28,3 +28,4 @@ Function simulates random walk of an ant within the boundaries influenced by an 
 \note{
 This function used inside ALO function to update the position of ants.
 }
+\keyword{internal}

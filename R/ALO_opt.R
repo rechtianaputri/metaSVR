@@ -135,7 +135,6 @@ RouletteWheelSelection <- function(weights){
 #' An algorithm built by Mirjalili (2015) inspired by the hunting behaviour of antlion whose making pit trap for ant prey
 #' in order to optimized real-valued objective function in continuous search space in a population-based manner.
 #'
-#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param Max_iter An integer indicate maximum number of iterations.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
