@@ -11,6 +11,11 @@
 #'   \item{dim}{An integer representing the number of dimensions, 3.}
 #' }
 #'
+#' @note The bounds for parameters search space is based on previous research with range:  Cost=[2^0,2^10], Gamma=[2^(-8),2^0], dan Epsilon=[2^(-8),2^0]
+#'
+#' @references
+#' Liu, H.-H., Chang, L.-C., Li, C.-W., & Yang, C.-H. (2018). Particle Swarm Optimization-Based Support Vector Regression for Tourist Arrivals Forecasting. Computational Intelligence and Neuroscience, 2018, 1–13. https://doi.org/10.1155/2018/6076475.
+#'
 #' @export
 #'
 #' @examples

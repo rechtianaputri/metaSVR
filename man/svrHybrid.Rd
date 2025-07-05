@@ -45,7 +45,7 @@ data validation to get the parameter if you separated the data as three categori
 \item{y_test}{A numeric vector of target values for training model. It can be replaced by
 data validation to get the parameter if you separated the data as three categories.}
 
-\item{kernel}{SVR kernel type used for modelling. Options: "radial", "polynomial", and "sigmoid". Default is radial.}
+\item{kernel}{SVR kernel type used for modelling. Options: "linear", "radial", "polynomial", and "sigmoid". Default is radial.}
 
 \item{optimizer}{Metaheuristic Algorithms selection, such as: "AO", "CBO", "AOCBO", "HHO", "GWO", "ALO", and "EHHOCBO". Default is AO.}
 

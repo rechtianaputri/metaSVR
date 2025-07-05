@@ -13,6 +13,17 @@
 #'
 #'@export
 normalize <- function(x) {
+  # Input Validation
+  if (!is.numeric(x)) {
+    stop("'x' must be a numeric vector.")
+  }
+  if (length(x) < 2) {
+    stop("'x' must contain at least two values to be normalized.")
+  }
+  if (all(x == x[1])) {
+    stop("Cannot normalize a constant vector; all values are equal.")
+  }
+
   return((x - min(x)) / (max(x) - min(x)))
 }
 
@@ -39,5 +50,23 @@ normalize <- function(x) {
 #'
 #' @export
 denormalize <- function(x,min,max){
+  # Input Validation
+  if (!is.numeric(x)) {
+    stop("'x' must be a numeric vector.")
+  }
+  if (!is.numeric(min) || length(min) != 1) {
+    stop("'min' must be a single numeric value.")
+  }
+  if (!is.numeric(max) || length(max) != 1) {
+    stop("'max' must be a single numeric value.")
+  }
+  if (min >= max) {
+    stop("'min' must be strictly less than 'max'.")
+  }
+  tolerance <- 1e-8
+  if (any(x < 0 - tolerance | x > 1 + tolerance)) {
+    warning("Some values in 'x' are outside [0, 1]; results may be invalid denormalization.")
+  }
+
   return((x * (max-min)) + min)
 }

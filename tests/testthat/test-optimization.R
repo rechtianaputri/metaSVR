@@ -8,6 +8,7 @@ preds_gen <- function(params) {
   actuals + sin(seq_along(actuals)) * params[1] - log(1 + abs(params[2])) + params[3] * 0.1
 }
 
+# 1. ALO Optimizer Testing
 test_that("ALO optimizer minimizes MAE loss", {
   set.seed(123)
 
@@ -28,6 +29,7 @@ test_that("ALO optimizer minimizes MAE loss", {
   expect_true(is.numeric(result$best_fitness))
 })
 
+# 2. AO Optimizer Testing
 test_that("AO optimizer minimizes RMSE loss", {
   set.seed(123)
 
@@ -49,6 +51,7 @@ test_that("AO optimizer minimizes RMSE loss", {
   expect_true(is.numeric(result$best_fitness))
 })
 
+# 3. AOCBO Optimizer Testing
 test_that("AOCBO optimizer minimizes SMAPE loss", {
   set.seed(123)
 
@@ -70,6 +73,7 @@ test_that("AOCBO optimizer minimizes SMAPE loss", {
   expect_true(is.numeric(result$best_fitness))
 })
 
+# 4. CBO Optimizer Testing
 test_that("CBO optimizer minimizes MAPE loss", {
   set.seed(123)
 
@@ -91,6 +95,7 @@ test_that("CBO optimizer minimizes MAPE loss", {
   expect_true(is.numeric(result$best_fitness))
 })
 
+# 5. EHHOCBO Optimizer Testing
 test_that("EHHOCBO optimizer minimizes MAE loss", {
   set.seed(123)
 
@@ -111,6 +116,7 @@ test_that("EHHOCBO optimizer minimizes MAE loss", {
   expect_true(is.numeric(result$best_fitness))
 })
 
+# 6. GWO Optimizer Testing
 test_that("GWO optimizer minimizes RMSE loss", {
   set.seed(123)
 
@@ -132,6 +138,7 @@ test_that("GWO optimizer minimizes RMSE loss", {
   expect_true(is.numeric(result$best_fitness))
 })
 
+# 7. HHO Optimizer Testing
 test_that("HHO optimizer minimizes SMAPE loss", {
   set.seed(123)
 

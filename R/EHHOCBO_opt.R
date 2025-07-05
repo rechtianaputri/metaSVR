@@ -92,6 +92,33 @@ levyEHHOCBO <- function(dim) {
 #'
 
 EHHOCBO <- function(N,Max_iter,lb,ub,dim,fobj) {
+  # Input Validation Checking
+  if (!is.numeric(N) || length(N) != 1 || N <= 0 || N != as.integer(N)) {
+    stop("'N' must be a positive integer.")
+  }
+  if (!is.numeric(Max_iter) || length(Max_iter) != 1 || Max_iter <= 0 || Max_iter != as.integer(Max_iter)) {
+    stop("'Max_iter' must be a positive integer.")
+  }
+  if (!is.numeric(dim) || length(dim) != 1 || dim <= 0 || dim != as.integer(dim)) {
+    stop("'dim' must be a positive integer.")
+  }
+  if (!is.numeric(lb) || length(lb) != dim) {
+    stop("'lb' must be a numeric vector with length equal to 'dim'.")
+  }
+  if (!is.numeric(ub) || length(ub) != dim) {
+    stop("'ub' must be a numeric vector with length equal to 'dim'.")
+  }
+  if (any(lb >= ub)) {
+    stop("Each element of 'lb' must be strictly less than the corresponding element in 'ub'.")
+  }
+  if (!is.function(fobj)) {
+    stop("'fobj' must be a valid function that returns a single numeric value.")
+  }
+  test_eval <- try(fobj(rep((lb + ub) / 2, dim)), silent = TRUE)
+  if (inherits(test_eval, "try-error") || !is.numeric(test_eval) || length(test_eval) != 1) {
+    stop("The objective function 'fobj' must return a single numeric value when passed a numeric vector of length 'dim'.")
+  }
+
   rab_loc <- matrix(0L, nrow = 1, ncol= dim)
   rab_en <- Inf
   X<- initEHHOCBO(N,dim,ub,lb)

@@ -1,6 +1,7 @@
 library(testthat)
 library(metaSVR)
 
+# 1. Test Expected Result of Bounds
 test_that("get_default_bounds returns correct structure and values", {
   bounds <- get_default_bounds()
   expect_type(bounds, "list")

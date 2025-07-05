@@ -19,10 +19,16 @@ This function return the default value of lower and upper bounds also the dimens
 The three dimensions represent as the parameter that need to be optimized in SVR with exact range of bound.
 Three dimension and the range represent as: Cost (C): 2^0 to 2^10; Gamma: 2^(-8) to 2^0; Epsilon: 2^(-8) to 2^0.
 }
+\note{
+The bounds for parameters search space is based on previous research with range:  Cost=[2^0,2^10], Gamma=[2^(-8),2^0], dan Epsilon=[2^(-8),2^0]
+}
 \examples{
 bounds <- get_default_bounds()
 bounds$lb  # Lower bounds
 bounds$ub  # Upper bounds
 bounds$dim # Number of parameters
 
+}
+\references{
+Liu, H.-H., Chang, L.-C., Li, C.-W., & Yang, C.-H. (2018). Particle Swarm Optimization-Based Support Vector Regression for Tourist Arrivals Forecasting. Computational Intelligence and Neuroscience, 2018, 1–13. https://doi.org/10.1155/2018/6076475.
 }

@@ -137,3 +137,7 @@ version 0.1.0. <https://github.com/rechtianaputri/metaSVR>.
 - Heidari, A. A., Mirjalili, S., Faris, H., Aljarah, I., Mafarja, M., &
   Chen, H. (2019). Harris hawks optimization: Algorithm and
   applications. Future generation computer systems, 97, 849-872.
+- Liu, H.-H., Chang, L.-C., Li, C.-W., & Yang, C.-H. (2018). Particle
+  Swarm Optimization-Based Support Vector Regression for Tourist
+  Arrivals Forecasting. Computational Intelligence and Neuroscience,
+  2018, 1–13.

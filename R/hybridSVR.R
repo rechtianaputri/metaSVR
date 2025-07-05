@@ -17,7 +17,7 @@
 #' data validation to get the parameter if you separated the data as three categories.
 #' @param y_test A numeric vector of target values for training model. It can be replaced by
 #' data validation to get the parameter if you separated the data as three categories.
-#' @param kernel SVR kernel type used for modelling. Options: "radial", "polynomial", and "sigmoid". Default is radial.
+#' @param kernel SVR kernel type used for modelling. Options: "linear", "radial", "polynomial", and "sigmoid". Default is radial.
 #' @param optimizer Metaheuristic Algorithms selection, such as: "AO", "CBO", "AOCBO", "HHO", "GWO", "ALO", and "EHHOCBO". Default is AO.
 #' @param objective Objective function used for optimization as prediction quality measures. Options: "SMAPE", "MAPE", "RMSE", and "MAE". Default is RMSE.
 #' @param is.y.normalize Logical; use when prediction of target variable 'y' is on min-max scalling normalization. Default is FALSE. Note: It is only use when the data normalize by normalize() function in this package.
@@ -77,6 +77,35 @@ svrHybrid <- function(x_train, y_train,
                       cross = 0, probability = FALSE,
                       fitted = TRUE, ..., subset,
                       na.action = na.omit) {
+
+  # Data Validation: Error Message
+  # Data type validation
+  if (!is.matrix(x_train) && !is.data.frame(x_train)) stop("'x_train' must be a matrix or data.frame.")
+  if (!is.matrix(x_test) && !is.data.frame(x_test)) stop("'x_test' must be a matrix or data.frame.")
+  if (!is.numeric(y_train)) stop("'y_train' must be numeric.")
+  if (!is.numeric(y_test)) stop("'y_test' must be numeric.")
+
+  # Validasi dimensi
+  if (nrow(x_train) != length(y_train)) stop("The number of rows in 'x_train' must match the length of 'y_train'.")
+  if (nrow(x_test) != length(y_test)) stop("The number of rows in 'x_test' must match the length of 'y_test'.")
+
+  # Validasi faktor
+  if (any(sapply(x_train, is.factor))) stop("'x_train' contains factor variables. Please convert them to numeric.")
+  if (any(sapply(x_test, is.factor))) stop("'x_test' contains factor variables. Please convert them to numeric.")
+
+  # Validasi kernel, optimizer, objective
+  valid_kernels <- c("linear", "radial", "polynomial", "sigmoid")
+  if (!(kernel %in% valid_kernels)) stop("Invalid 'kernel'. Choose from: linear, radial, polynomial, sigmoid.")
+
+  valid_optimizers <- c("AO", "CBO", "AOCBO", "HHO", "GWO", "ALO", "EHHOCBO")
+  if (!(optimizer %in% valid_optimizers)) stop("Invalid 'optimizer'. Choose from: AO, CBO, AOCBO, HHO, GWO, ALO, or EHHOCBO.")
+
+  valid_objectives <- c("SMAPE", "MAPE", "RMSE", "MAE")
+  if (!(toupper(objective) %in% valid_objectives)) stop("Invalid 'objective'. Choose from: SMAPE, MAPE, RMSE, MAE.")
+
+  if (!is.numeric(max_iter) || max_iter <= 0) stop("'max_iter' must be a positive number.")
+  if (!is.numeric(N) || N <= 0) stop("'N' must be a positive number.")
+
 
   start <- Sys.time()
 

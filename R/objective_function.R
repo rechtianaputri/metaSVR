@@ -16,12 +16,23 @@
 #'
 #' @export
 loss_calculate <- function(preds, actuals, objective) {
+  # Input validation
+  if (!is.numeric(preds) || !is.numeric(actuals)) {
+    stop("'preds' and 'actuals' must be numeric vectors.")
+  }
+  if (length(preds) != length(actuals)) {
+    stop("'preds' and 'actuals' must have the same length.")
+  }
+  if (!is.character(objective) || length(objective) != 1) {
+    stop("'objective' must be a single character string.")
+  }
+
   switch(objective,
          "SMAPE" = smape(preds, actuals),
          "MAPE" = mape(preds, actuals),
          "RMSE" = rmse(preds, actuals),
          "MAE" = mae(preds, actuals),
-         stop("Invalid objective function!")
+         stop("Invalid objective function! Objective must be one of: SMAPE, MAPE, RMSE, or MAE.")
   )
 }
 
@@ -41,6 +52,14 @@ loss_calculate <- function(preds, actuals, objective) {
 #'
 #' @export
 smape <- function(preds, actuals) {
+  # Input Validation
+  if (!is.numeric(preds) || !is.numeric(actuals)) {
+    stop("'preds' and 'actuals' must be numeric vectors.")
+  }
+  if (length(preds) != length(actuals)) {
+    stop("'preds' and 'actuals' must have the same length.")
+  }
+
   mean(2 * abs(preds - actuals) / (abs(preds) + abs(actuals))) * 100
 }
 
@@ -62,6 +81,17 @@ smape <- function(preds, actuals) {
 #'
 #' @export
 mape <- function(preds, actuals) {
+  # Input Validation
+  if (!is.numeric(preds) || !is.numeric(actuals)) {
+    stop("'preds' and 'actuals' must be numeric vectors.")
+  }
+  if (length(preds) != length(actuals)) {
+    stop("'preds' and 'actuals' must have the same length.")
+  }
+  if (any(actuals == 0)) {
+    stop("MAPE is undefined when actual values contain zero.")
+  }
+
   mean(abs((actuals - preds) / actuals)) * 100
 }
 
@@ -81,6 +111,14 @@ mape <- function(preds, actuals) {
 #'
 #' @export
 rmse <- function(preds, actuals) {
+  # Input Validation
+  if (!is.numeric(preds) || !is.numeric(actuals)) {
+    stop("'preds' and 'actuals' must be numeric vectors.")
+  }
+  if (length(preds) != length(actuals)) {
+    stop("'preds' and 'actuals' must have the same length.")
+  }
+
   sqrt(mean((preds - actuals)^2))
 }
 
@@ -100,6 +138,14 @@ rmse <- function(preds, actuals) {
 #'
 #' @export
 mae <- function(preds, actuals) {
+  # Input Validation
+  if (!is.numeric(preds) || !is.numeric(actuals)) {
+    stop("'preds' and 'actuals' must be numeric vectors.")
+  }
+  if (length(preds) != length(actuals)) {
+    stop("'preds' and 'actuals' must have the same length.")
+  }
+
   mean(abs(preds - actuals))
 }
 
