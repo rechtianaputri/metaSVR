@@ -9,7 +9,7 @@ Imports:
     e1071,
     stats,
     hms
-License: MIT + file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/rechtianaputri/metaSVR
