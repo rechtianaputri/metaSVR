@@ -4,6 +4,8 @@
 #' Coot birds. Its population divided by two groups as leaders to guide the process and coots to follow leaders and randomly explore search space.
 #' This movement use to  optimized real-valued objective function in continuous search space.
 #'
+#' @importFrom stats runif
+#'
 #' @param N An integer indicate population size.
 #' @param Max_iter An integer indicate maximum number of iterations.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.

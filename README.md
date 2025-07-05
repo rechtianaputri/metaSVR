@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# metaSVR
+# metaSVR: Support Vector Regression with Metaheuristic Algorithms Optimization
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -58,44 +58,12 @@ result <- svrHybrid(x_train = x[1:40,], y_train = y[1:40],
                    kernel = "radial", optimizer = "AOCBO",
                    objective = "SMAPE", is.y.normalize = FALSE,
                    max_iter = 100, N = 40)
-#> Warning in param[1] <- Xbest: number of items to replace is not a multiple of
-#> replacement length
-#> At iteration 1 the best fitness is 54.33552
 
 # Access Results
 result$best_params # show the best parameter result
-#> $cost
-#> [1] 80.37593
-#> 
-#> $gamma
-#> [1] 0.003935142
-#> 
-#> $epsilon
-#> [1] 0.1139266
 result$total_iter # show total iteration to optimize
-#> [1] 39
 result$model # SVR model optimizing by metaheuristic algorithms
-#> 
-#> Call:
-#> svm.default(x = x_train, y = y_train, type = "eps-regression", kernel = kernel, 
-#>     degree = degree, gamma = best_params$gamma, coef0 = coef0, cost = best_params$cost, 
-#>     nu = nu, class.weights = class.weights, cachesize = cachesize, 
-#>     tolerance = tolerance, epsilon = best_params$epsilon, shrinking = shrinking, 
-#>     cross = cross, probability = probability, fitted = fitted, subset = subset, 
-#>     na.action = na.action)
-#> 
-#> 
-#> Parameters:
-#>    SVM-Type:  eps-regression 
-#>  SVM-Kernel:  radial 
-#>        cost:  80.37593 
-#>       gamma:  0.003935142 
-#>     epsilon:  0.1139266 
-#> 
-#> 
-#> Number of Support Vectors:  26
 result$time # Time used to generate optimization
-#> 00:00:09.068762
 ```
 
 ## Documentation

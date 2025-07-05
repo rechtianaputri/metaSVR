@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# metaSVR
+# metaSVR: Support Vector Regression with Metaheuristic Algorithms Optimization
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -52,7 +52,7 @@ devtools::install_github("rechtianaputri/metaSVR")
 
 Here is a simple usage example of metaSVR using synthetic data:
 
-```{r example}
+```{r, echo=TRUE, results='hide', warning=FALSE, message=FALSE}
 library(metaSVR)
 
 #Generate synthetic data

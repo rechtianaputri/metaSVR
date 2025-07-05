@@ -20,7 +20,7 @@
 #' @param kernel SVR kernel type used for modelling. Options: "radial", "polynomial", and "sigmoid". Default is radial.
 #' @param optimizer Metaheuristic Algorithms selection, such as: "AO", "CBO", "AOCBO", "HHO", "GWO", "ALO", and "EHHOCBO". Default is AO.
 #' @param objective Objective function used for optimization as prediction quality measures. Options: "SMAPE", "MAPE", "RMSE", and "MAE". Default is RMSE.
-#' @param is.y.normalize Logical; use when prediction of target variable 'y' is on min-max scalling normalization. Default is FALSE.
+#' @param is.y.normalize Logical; use when prediction of target variable 'y' is on min-max scalling normalization. Default is FALSE. Note: It is only use when the data normalize by normalize() function in this package.
 #' @param min.y Minimum value of target (used for denormalization).
 #' @param max.y Maximum value of target (used for denormalization).
 #' @param max_iter Maximum number of iterations for the optimizer. Default is 100.
