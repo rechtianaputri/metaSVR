@@ -87,7 +87,7 @@ result$time # Time used to generate optimization
 ## Documentation
 
 Each metaheuristic is implemented as a standalone optimizer, used by each optimization to improve SVR. For full documentation see the help files:
-```{r}
+```{r, results='hide'}
 ?svrHybrid
 ?AO
 ?CBO
@@ -105,9 +105,13 @@ This package was developed by:
 
 ## Citation
 
-```{r citation}
-citation("metaSVR")
-```
+To cite the metaSVR package, please use:
+
+Arini, Rechtiana Putri & Kurniawan, Robert. (2025). metaSVR:
+  Support Vector Regression with Metaheuristic Algorithms
+  Optimization. R package version 0.1.0.
+  https://github.com/rechtianaputri/metaSVR.
+
 
 ## References
 

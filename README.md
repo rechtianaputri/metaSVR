@@ -89,15 +89,10 @@ files:
 
 ``` r
 ?svrHybrid
-#> ℹ Rendering development documentation for "svrHybrid"
 ?AO
-#> ℹ Rendering development documentation for "AO"
 ?CBO
-#> ℹ Rendering development documentation for "CBO"
 ?AOCBO
-#> ℹ Rendering development documentation for "AOCBO"
 ?loss_calculate
-#> ℹ Rendering development documentation for "loss_calculate"
 ```
 
 You can also check the full manual on:
@@ -112,24 +107,10 @@ This package was developed by:
 
 ## Citation
 
-``` r
-citation("metaSVR")
-#> 
-#> To cite the metaSVR package, please use:
-#> 
-#>   Arini, Rechtiana Putri & Kurniawan, Robert. (2025). metaSVR: Support
-#>   Vector Regression with Metaheuristic Algorithms Optimization. R
-#>   package version 0.1.0. https://github.com/rechtianaputri/metaSVR
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Manual{,
-#>     title = {metaSVR: Support Vector Regression with Metaheuristic Algorithms Optimization},
-#>     author = {Rechtiana Putri Arini and Robert Kurniawan},
-#>     year = {2025},
-#>     note = {R package version 0.1.0},
-#>     url = {https://github.com/rechtianaputri/metaSVR},
-#>   }
-```
+To cite the metaSVR package, please use:
+
+Arini, Rechtiana Putri & Kurniawan, Robert. (2025). metaSVR: Support
+Vector Regression with Metaheuristic Algorithms Optimization. R package
+version 0.1.0. <https://github.com/rechtianaputri/metaSVR>.
 
 ## References
