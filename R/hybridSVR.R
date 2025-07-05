@@ -1,4 +1,4 @@
-#' Hybrid SVR Optimization with Metaheuristic Algorithms
+#' SVR with Metaheuristic Algorithms Optimization
 #'
 #' Trains a Support vector Regression Model by optimizing its parameter (Cost, Gamma, and Epsilon)
 #' using Metaheuristic Algorithms such as: Archimedes Optimization (AO), Coot Bird Optimization (CBO),

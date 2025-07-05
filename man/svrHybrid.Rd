@@ -2,7 +2,7 @@
 % Please edit documentation in R/hybridSVR.R
 \name{svrHybrid}
 \alias{svrHybrid}
-\title{Hybrid SVR Optimization with Metaheuristic Algorithms}
+\title{SVR with Metaheuristic Algorithms Optimization}
 \usage{
 svrHybrid(
   x_train,
@@ -51,7 +51,7 @@ data validation to get the parameter if you separated the data as three categori
 
 \item{objective}{Objective function used for optimization as prediction quality measures. Options: "SMAPE", "MAPE", "RMSE", and "MAE". Default is RMSE.}
 
-\item{is.y.normalize}{Logical; use when prediction of target variable 'y' is on min-max scalling normalization. Default is FALSE.}
+\item{is.y.normalize}{Logical; use when prediction of target variable 'y' is on min-max scalling normalization. Default is FALSE. Note: It is only use when the data normalize by normalize() function in this package.}
 
 \item{min.y}{Minimum value of target (used for denormalization).}
 

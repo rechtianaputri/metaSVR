@@ -1,0 +1,16 @@
+citHeader("To cite the metaSVR package, please use:")
+citEntry(
+  entry = "Manual",
+  title = "metaSVR: Support Vector Regression with Metaheuristic Algorithms Optimization",
+  author = "Rechtiana Putri Arini and Robert Kurniawan"
+  year = "2025",
+  note = "R package version 0.1.0",
+  url = "https://github.com/rechtianaputri/metaSVR"
+
+  textVersion = paste(
+    "Arini, Rechtiana Putri & Kurniawan, Robert. (2025).",
+    "metaSVR: Support Vector Regression with Metaheuristic Algorithms Optimization",
+    "R package version 0.1.0",
+    "https://github.com/rechtianaputri/metaSVR"
+  )
+)
