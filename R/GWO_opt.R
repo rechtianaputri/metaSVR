@@ -2,6 +2,7 @@
 #'
 #' This function generates the initial position of gray wolf within the defined upper and lower bound in every dimension.
 #'
+#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
 #' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
@@ -33,6 +34,7 @@ initGWO <- function(N,dim,ub,lb) {
 #' An algorithm built by Mirjalili et al. (2014) inspired by leadership hierarchy and hunting mechanism of
 #' grey wolves in nature to optimized real-valued objective function in continuous search space in a population-based manner.
 #'
+#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param Max_iter An integer indicate maximum number of iterations.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.

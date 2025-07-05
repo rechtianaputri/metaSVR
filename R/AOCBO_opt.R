@@ -3,6 +3,7 @@
 #' A hybrid metaheuristic algorithm that combines Archimedes Optimization (AO) with
 #' Coot Bird Optimization (CBO) to optimized real-valued objective function in continuous search space.
 #'
+#' @keywords internal
 #' @importFrom stats runif
 #'
 #' @param N An integer indicate population size.

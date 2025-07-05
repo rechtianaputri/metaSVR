@@ -2,6 +2,7 @@
 #'
 #' This function generates the initial position of Harris Hawk agents within the defined upper and lower bound in every dimension.
 #'
+#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
 #' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
@@ -32,6 +33,7 @@ initHHO <- function(N,dim,ub,lb){
 #'
 #' Generates a random step vector based on Lévy flight distribution, used in the exploitation phase of the HHO algorithm.
 #'
+#' @keywords internal
 #' @param dim An integer that indicate the dimensionality of search space.
 #'
 #' @return A numeric vector of length \code{dim} representing the Lévy flight step.

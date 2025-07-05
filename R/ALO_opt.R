@@ -2,6 +2,7 @@
 #'
 #' This function generates the initial position of antlions and ants within the defined upper and lower bound in every dimension.
 #'
+#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
 #' @param ub A numeric vector that show upper bounds of the search space. One value per dimension.
@@ -36,6 +37,7 @@ initALO <- function(N,dim,ub,lb){
 #'
 #' Function simulates random walk of an ant within the boundaries influenced by an antlion's position.
 #'
+#' @keywords internal
 #' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
 #' @param Max_iter An integer indicate maximum number of iterations.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
@@ -105,6 +107,7 @@ Random_walk_around_antlion <- function(dim, Max_iter, lb, ub, antlion, current_i
 #'
 #' Function used to select an individual index based on fitness-proportional selection (inverse fitness weight).
 #'
+#' @keywords internal
 #' @param weights A numeric vector of weights.
 #'
 #' @return An integer representing the selected index.
@@ -132,6 +135,7 @@ RouletteWheelSelection <- function(weights){
 #' An algorithm built by Mirjalili (2015) inspired by the hunting behaviour of antlion whose making pit trap for ant prey
 #' in order to optimized real-valued objective function in continuous search space in a population-based manner.
 #'
+#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param Max_iter An integer indicate maximum number of iterations.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.

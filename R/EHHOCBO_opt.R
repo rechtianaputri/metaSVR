@@ -2,6 +2,7 @@
 #'
 #' This function generates the initial position of all agents (X) within the defined upper and lower bound in every dimension.
 #'
+#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param dim An integer show the number of dimension (parameters) of the problem to optimize. It indicate the number of parameters to be optimized.
 #' @param ub A numeric vector that show upper bounds of the search space. One value per dimension
@@ -33,6 +34,7 @@ initEHHOCBO <- function(N, dim, ub,lb){
 #'
 #' Generates a random step vector based on Lévy flight distribution, used in the exploitation phase of HHO that used as combined in EHHOCBO.
 #'
+#' @keywords internal
 #' @param dim An integer that indicate the dimensionality of search space.
 #'
 #' @return A numeric vector of length \code{dim} representing the Lévy flight step.
@@ -56,6 +58,7 @@ levyEHHOCBO <- function(dim) {
 #' This function implements a hybrid metaheuristic optimization algorithm that combines Harris Hawks Optimization with leader selection of Coot Bird
 #' Optimization to optimized real-valued objective function in continuous search space in a population-based manner built by Cui et al. (2023).
 #'
+#' @keywords internal
 #' @param N An integer indicate population size.
 #' @param Max_iter An integer indicate maximum number of iterations.
 #' @param lb A numeric vector that show lower bounds of the search space. One value per dimension.
