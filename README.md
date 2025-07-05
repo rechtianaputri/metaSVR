@@ -23,12 +23,12 @@ Bird Optimization (CBO) - Combined Archimedes Optimization with Coot
 Bird Optimization (AOCBO) - Harris Hawks Optimization (HHO) - Grey Wolf
 Optimizer (GWO) - Ant Lion Optimization (ALO) - Enhanced Harris Hawks
 Optimization with Coot Bird Optimization (EHHOCBO) - SVR can be
-customized by kernel, options: radial, polynomial, sigmoid. - Multiple
-objective function can be used, options: sMAPE, MAPE, RMSE, MAE -
-Flexible hyperparameter search space for cost, gamma, and epsilon -
-Built-in data with min-max normalization and automatic denormalization
-handling of prediction result. - Output produced best parameter set,
-iteration history, time used, and evaluation metrics.
+customized by kernel, options: linear, radial, polynomial, sigmoid. -
+Multiple objective function can be used, options: sMAPE, MAPE, RMSE,
+MAE - Flexible hyperparameter search space for cost, gamma, and
+epsilon - Built-in data with min-max normalization and automatic
+denormalization handling of prediction result. - Output produced best
+parameter set, iteration history, time used, and evaluation metrics.
 
 ## Installation
 
