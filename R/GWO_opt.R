@@ -63,6 +63,18 @@ initGWO <- function(N,dim,ub,lb) {
 #'
 #' This optimization function used inside svrHybrid function.
 #'
+#' @examples
+#' \dontrun{
+#' sphere_fn <- function(x) sum(x^2) # simple function for objective function
+#'
+#' # GWO optimization
+#' set.seed(123)
+#' result <- GWO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+#'
+#' # View best fitness and position found
+#' result$best_fitness
+#' result$best_position
+#' }
 #' @references
 #' Mirjalili, S., Mirjalili, S. M., & Lewis, A. (2014). Grey wolf optimizer.
 #' Advances in engineering software, 69, 46-61. https://doi.org/10.1016/j.advengsoft.2013.12.007

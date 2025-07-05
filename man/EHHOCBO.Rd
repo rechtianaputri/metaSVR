@@ -47,6 +47,20 @@ The input vectors `lb` and `ub` must have the same length as the number of dimen
 
 This optimization function used inside svrHybrid function.
 }
+\examples{
+\dontrun{
+sphere_fn <- function(x) sum(x^2) # simple function for objective function
+
+# EHHOCBO optimization
+set.seed(123)
+result <- EHHOCBO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+
+# View best fitness and position found
+result$best_fitness
+result$best_position
+}
+
+}
 \references{
 Cui, H., Guo, Y., Xiao, Y., Wang, Y., Li, J., Zhang, Y., & Zhang, H. (2023). Enhanced Harris Hawks Optimization Integrated with Coot Bird Optimization for
 Solving Continuous Numerical Optimization Problems. CMES - Computer Modeling in Engineering and Sciences, 137(2), 1635–1675. https://doi.org/10.32604/cmes.2023.026019

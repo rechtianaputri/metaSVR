@@ -49,6 +49,20 @@ This optimization function used inside svrHybrid function.
 
 Constant of C3 = 1 and C4 = 2 used in basic standard optimization function.
 }
+\examples{
+\dontrun{
+sphere_fn <- function(x) sum(x^2) # simple function for objective function
+
+# AO optimization
+set.seed(123)
+result <- AO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+
+# View best fitness and position found
+result$best_fitness
+result$best_position
+}
+
+}
 \references{
 Hashim, F. A., Hussain, K., Houssein, E. H., Mabrouk, M. S., & Al-Atabany, W. (2021).
 Archimedes Optimization Algorithm: A New Metaheuristic Algorithm for Solving Optimization Problems.

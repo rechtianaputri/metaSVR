@@ -46,6 +46,20 @@ The input vectors 'lb' and 'ub' must have the same length as the number of dimen
 
 This optimization function used inside svrHybrid function.
 }
+\examples{
+\dontrun{
+sphere_fn <- function(x) sum(x^2) # simple function for objective function
+
+# ALO optimization
+set.seed(123)
+result <- ALO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+
+# View best fitness and position found
+result$best_fitness
+result$best_position
+}
+
+}
 \references{
 Mirjalili, S. (2015). The Ant Lion Optimizer. Advances in Engineering Software, 83, 80-98.
 https://doi.org/10.1016/j.advengsoft.2015.01.010.
