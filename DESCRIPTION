@@ -1,6 +1,6 @@
 Package: metaSVR
 Type: Package
-Title: Hybrid Support Vector Regression with Metaheuristic Optimization
+Title: Support Vector Regression with Metaheuristic Algorithms Optimization
 Version: 0.1.0
 Author: Rechtiana Putri Arini, Robert Kurniawan 
 Maintainer: Rechtiana <rparini17@gmail.com>
