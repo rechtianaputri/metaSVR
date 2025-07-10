@@ -106,6 +106,20 @@ svrHybrid <- function(x_train, y_train,
   if (!is.numeric(max_iter) || max_iter <= 0) stop("'max_iter' must be a positive number.")
   if (!is.numeric(N) || N <= 0) stop("'N' must be a positive number.")
 
+  if (is.y.normalize) {
+    if (missing(min.y) || missing(max.y)) {
+      stop("When is.y.normalize = TRUE, both 'min.y' and 'max.y' must be provided.")
+    }
+    if (!is.numeric(min.y) || length(min.y) != 1) {
+      stop("'min.y' must be a single numeric value.")
+    }
+    if (!is.numeric(max.y) || length(max.y) != 1) {
+      stop("'max.y' must be a single numeric value.")
+    }
+    if (min.y >= max.y) {
+      stop("'min.y' must be strictly less than 'max.y'.")
+    }
+  }
 
   start <- Sys.time()
 

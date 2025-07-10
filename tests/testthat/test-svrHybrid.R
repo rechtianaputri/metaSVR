@@ -413,3 +413,61 @@ test_that("Incorrect population (N) input on svrHybrid, must be positive", {
     )
   )
 })
+
+# 16. Validation Testing for Normalization
+set.seed(123)
+n_train <- 40
+n_test  <- 10
+n_feat  <- 3
+x_train <- data.frame(
+  x1 = runif(n_train),
+  x2 = rnorm(n_train),
+  x3 = rnorm(n_train, mean = 5)
+)
+x_test <- data.frame(
+  x1 = runif(n_test),
+  x2 = rnorm(n_test),
+  x3 = rnorm(n_test, mean = 5)
+)
+y_train <- x_train$x1 * 2 + x_train$x2 - x_train$x3 + rnorm(n_train)
+y_test  <- x_test$x1 * 2 + x_test$x2 - x_test$x3 + rnorm(n_test)
+test_that("svrHybrid errors when is.y.normalize=TRUE but min.y/max.y missing", {
+  expect_error(
+    svrHybrid(x_train = x_train, y_train = y_train,
+              x_test  = x_test,  y_test  = y_test,
+              is.y.normalize = TRUE,
+              # min.y & max.y tidak diberikan
+              optimizer = "AO", kernel = "radial"),
+    "When is.y.normalize = TRUE, both 'min.y' and 'max.y' must be provided\\."
+  )
+})
+
+test_that("svrHybrid errors when min.y or max.y not numeric scalar", {
+  expect_error(
+    svrHybrid(x_train = x_train, y_train = y_train,
+              x_test  = x_test,  y_test  = y_test,
+              is.y.normalize = TRUE,
+              min.y = c(0,1), max.y = 1,
+              optimizer = "AO", kernel = "radial"),
+    "'min.y' must be a single numeric value\\."
+  )
+  expect_error(
+    svrHybrid(x_train = x_train, y_train = y_train,
+              x_test  = x_test,  y_test  = y_test,
+              is.y.normalize = TRUE,
+              min.y = 0, max.y = "high",
+              optimizer = "AO", kernel = "radial"),
+    "'max.y' must be a single numeric value\\."
+  )
+})
+
+test_that("svrHybrid errors when min.y >= max.y", {
+  expect_error(
+    svrHybrid(x_train = x_train, y_train = y_train,
+              x_test  = x_test,  y_test  = y_test,
+              is.y.normalize = TRUE,
+              min.y = 5, max.y = 5,
+              optimizer = "AO", kernel = "radial"),
+    "'min.y' must be strictly less than 'max.y'\\."
+  )
+})
