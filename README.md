@@ -96,7 +96,7 @@ files:
 ```
 
 You can also check the full manual on:
-<https://s.stis.ac.id/dokumentasi-metaSVR>.
+<https://s.stis.ac.id/documentation-metaSVR>.
 
 ## Authors and Contributors
 

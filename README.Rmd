@@ -94,7 +94,7 @@ Each metaheuristic is implemented as a standalone optimizer, used by each optimi
 ?AOCBO
 ?loss_calculate
 ```
-You can also check the full manual on: https://s.stis.ac.id/dokumentasi-metaSVR. 
+You can also check the full manual on: https://s.stis.ac.id/documentation-metaSVR. 
 
 ## Authors and Contributors
 
