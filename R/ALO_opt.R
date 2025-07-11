@@ -205,10 +205,11 @@ ALO <- function(N, Max_iter, lb, ub, dim, fobj){
   if (!is.function(fobj)) {
     stop("'fobj' must be a valid function that returns a single numeric value.")
   }
-  test_eval <- try(fobj(rep((lb + ub) / 2, dim)), silent = TRUE)
+  test_eval <- try(fobj(rep((lb + ub)/2, dim)), silent = TRUE)
   if (inherits(test_eval, "try-error") || !is.numeric(test_eval) || length(test_eval) != 1) {
     stop("The objective function 'fobj' must return a single numeric value when passed a numeric vector of length 'dim'.")
   }
+
 
   antlion_position <- initALO(N,dim,ub,lb)
   ant_position <- initALO(N,dim,ub,lb)

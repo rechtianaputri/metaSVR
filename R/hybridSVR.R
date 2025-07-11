@@ -148,7 +148,7 @@ svrHybrid <- function(x_train, y_train,
       actuals <- y_test
     }
 
-    loss_calculate(actuals, preds, objective)
+    loss_calculate(preds, actuals, objective)
   }
 
   optimizer_func <- switch(optimizer,
