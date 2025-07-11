@@ -63,10 +63,6 @@ denormalize <- function(x,min,max){
   if (min >= max) {
     stop("'min' must be strictly less than 'max'.")
   }
-  tolerance <- 1e-20
-  if (any(x < 0 - tolerance | x > 1 + tolerance)) {
-    warning("Some values in 'x' are outside [0, 1]; results may be invalid denormalization.")
-  }
 
   return((x * (max-min)) + min)
 }

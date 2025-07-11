@@ -37,7 +37,3 @@ test_that("Denormalize throws error if max is not numeric scalar", {
 test_that("Denormalize throws error if min >= max", {
   expect_error(denormalize(c(0.1, 0.5), min = 10, max = 5), "'min' must be strictly less than 'max'.")
 })
-test_that("Denormalize gives warning if x contains values outside [0,1]", {
-  expect_warning(denormalize(c(-0.1, 1.2), min = 0, max = 100),
-                 "Some values in 'x' are outside \\[0, 1\\]")
-})
