@@ -104,14 +104,16 @@ This package was developed by:
 
 - Rechtiana Putri Arini
 - Robert Kurniawan
+- I Nyoman Setiawan
+- Zulhan Andika Asyraf
 
 ## Citation
 
 To cite the metaSVR package, please use:
 
-Arini, Rechtiana Putri & Kurniawan, Robert. (2025). metaSVR: Support
-Vector Regression with Metaheuristic Algorithms Optimization. R package
-version 0.1.0. <https://github.com/rechtianaputri/metaSVR>.
+Arini, R.P, Kurniawan, R., Setiawan, I.N & Asyraf, Z.A. (2025). metaSVR:
+Support Vector Regression with Metaheuristic Algorithms Optimization. R
+package version 0.1.0. <https://github.com/rechtianaputri/metaSVR>.
 
 ## References
 
