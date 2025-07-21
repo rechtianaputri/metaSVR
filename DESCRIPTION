@@ -4,7 +4,7 @@ Title: Support Vector Regression with Metaheuristic Algorithms Optimization
 Version: 0.1.0
 Author: Rechtiana Putri Arini, Robert Kurniawan, I Nyoman Setiawan, Zulhan Andika Asyraf 
 Maintainer: Rechtiana <rparini17@gmail.com>
-Description: This package provides hybrid of SVR with several metaheuristic algorithms. The use of metaheuristic algorithm is to optimize the parameter of Cost, Gamma, and Epsilon so it can get better evaluation. Metaheuristic classification used in this package are: Coot Bird Optimization (CBO), Archimedes Optimization (AO), Combined Archimedes Optimization with Coot Bird Optimization (AOCBO), Harris Hawks Optimization (HHO), Gray Wolf Optimizer (GWO), Ant Lion Optimization (ALO), and Enhanced Harris Hawk Optimization with Coot Bird Optimization (EHHOCBO).
+Description: Provides a hybrid modeling framework combining Support Vector Regression (SVR) with metaheuristic optimization algorithms, including the Archimedes Optimization Algorithm (AO), Coot Bird Optimization (CBO), and their hybrid (AOCBO), also several algorithms such as: Harris Hawks Optimization (HHO), Gray Wolf Optimizer (GWO), Ant Lion Optimization (ALO), and Enhanced Harris Hawk Optimization with Coot Bird Optimization (EHHOCBO). The package enables automatic tuning of SVR hyperparameters (cost, gamma, and epsilon) to help SVR get better prediction. Suitable for prediction and regression tasks in domain such as renewable energy forecasting and large hourly data prediction.
 Imports:
     e1071,
     stats,
@@ -18,3 +18,4 @@ RoxygenNote: 7.3.1
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Depends: R (>= 3.5.0)
