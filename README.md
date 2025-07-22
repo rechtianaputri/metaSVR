@@ -95,9 +95,6 @@ files:
 ?loss_calculate
 ```
 
-You can also check the full manual on:
-<https://s.stis.ac.id/documentation-metaSVR>.
-
 ## Authors and Contributors
 
 This package was developed by:
@@ -111,9 +108,25 @@ This package was developed by:
 
 To cite the metaSVR package, please use:
 
-Arini, R.P, Kurniawan, R., Setiawan, I.N & Asyraf, Z.A. (2025). metaSVR:
-Support Vector Regression with Metaheuristic Algorithms Optimization. R
-package version 0.1.0. <https://github.com/rechtianaputri/metaSVR>.
+``` r
+citation("metaSVR")
+#> 
+#> To cite package 'metaSVR' in publications use:
+#> 
+#>   Arini RP, Kurniawan R, Setiawan IN, Asyraf ZA (2025). _metaSVR:
+#>   Support Vector Regression with Metaheuristic Algorithms
+#>   Optimization_. R package version 0.1.0,
+#>   <https://github.com/rechtianaputri/metaSVR>.
+#> 
+#>   Arini RP, Kurniawan R, Setiawan IN, Asyraf ZA (2025). _metaSVR:
+#>   Support Vector Regression with Metaheuristic Algorithms
+#>   Optimization_. R package version 0.1.0,
+#>   <https://github.com/rechtianaputri/metaSVR>.
+#> 
+#> To see these entries in BibTeX format, use 'print(<citation>,
+#> bibtex=TRUE)', 'toBibtex(.)', or set
+#> 'options(citation.bibtex.max=999)'.
+```
 
 ## References
 

@@ -1,17 +1,15 @@
-citHeader("To cite the metaSVR package, please use:")
-
-citEntry(
-  entry = "Manual",
+metaSVR_cite <- bibentry(
+  bibtype = "Manual",
   title = "metaSVR: Support Vector Regression with Metaheuristic Algorithms Optimization",
-  author = "Rechtiana Putri Arini, Robert Kurniawan, I Nyoman Setiawan, and Zulhan Andika Asyraf",
+  author = c(
+    person(given = c("Rechtiana", "Putri"), family = "Arini"),
+    person(given = "Robert", family = "Kurniawan"),
+    person(given = c("I", "Nyoman"), family = "Setiawan"),
+    person(given = c("Zulhan", "Andika"), family = "Asyraf")
+  ),
   year = "2025",
   note = "R package version 0.1.0",
-  url = "https://github.com/rechtianaputri/metaSVR",
-
-  textVersion = paste(
-    "Arini, R.P, Kurniawan, R., Setiawan, I.N & Asyraf, Z.A. (2025).",
-    "metaSVR: Support Vector Regression with Metaheuristic Algorithms Optimization.",
-    "R package version 0.1.0.",
-    "https://github.com/rechtianaputri/metaSVR"
-  )
+  url = "https://github.com/rechtianaputri/metaSVR"
 )
+
+metaSVR_cite

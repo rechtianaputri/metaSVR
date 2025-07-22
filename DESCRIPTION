@@ -2,9 +2,12 @@ Package: metaSVR
 Type: Package
 Title: Support Vector Regression with Metaheuristic Algorithms Optimization
 Version: 0.1.0
-Author: Rechtiana Putri Arini, Robert Kurniawan, I Nyoman Setiawan, Zulhan Andika Asyraf 
-Maintainer: Rechtiana <rparini17@gmail.com>
-Description: Provides a hybrid modeling framework combining Support Vector Regression (SVR) with metaheuristic optimization algorithms, including the Archimedes Optimization Algorithm (AO), Coot Bird Optimization (CBO), and their hybrid (AOCBO), also several algorithms such as: Harris Hawks Optimization (HHO), Gray Wolf Optimizer (GWO), Ant Lion Optimization (ALO), and Enhanced Harris Hawk Optimization with Coot Bird Optimization (EHHOCBO). The package enables automatic tuning of SVR hyperparameters (cost, gamma, and epsilon) to help SVR get better prediction. Suitable for prediction and regression tasks in domain such as renewable energy forecasting and hourly data prediction.
+Authors@R: c(
+    person(given = c("Rechtiana", "Putri"), family = "Arini", role = c("aut", "cre"), email = "rparini17@gmail.com"),
+    person(given = "Robert", family = "Kurniawan", role = "aut"),
+    person(given = c("I", "Nyoman"), family = "Setiawan", role = "aut"),
+    person(given = c("Zulhan", "Andika"), family = "Asyraf", role = "aut"))
+Description: Provides a hybrid modeling framework combining Support Vector Regression (SVR) with metaheuristic optimization algorithms, including the Archimedes Optimization Algorithm (AO), Coot Bird Optimization (CBO), and their hybrid (AOCBO), as well as several others such as Harris Hawks Optimization (HHO), Gray Wolf Optimizer (GWO), Ant Lion Optimization (ALO), and Enhanced Harris Hawk Optimization with Coot Bird Optimization (EHHOCBO). The package enables automatic tuning of SVR hyperparameters (cost, gamma, and epsilon) to enhance prediction performance. Suitable for regression tasks in domains such as renewable energy forecasting and hourly data prediction.
 Imports:
     e1071,
     stats,
