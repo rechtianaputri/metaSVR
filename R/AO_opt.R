@@ -54,7 +54,8 @@
 #' Applied Intelligence, 51(3), 1531–1551. https://doi.org/10.1007/s10489-020-01893-z
 #'
 #' @importFrom stats runif
-
+#' @export
+#'
 AO <- function(N, Max_iter, lb, ub, dim, fobj) {
   # Input Validation Checking
   if (!is.numeric(N) || length(N) != 1 || N <= 0 || N != as.integer(N)) {
@@ -108,7 +109,6 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
     }
   }
 
-  # X <- matrix(lb + runif(N * dim) * (ub - lb), nrow = N, ncol = dim)
   den <- matrix(runif(N * dim), nrow = N, ncol = dim) # Eq. 5
   vol <- matrix(runif(N * dim), nrow = N, ncol = dim)
 
@@ -135,7 +135,6 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
   acc_best <- acc[Score_index, ]
   acc_norm <- acc
 
-  #NOTED
   objective_history[1] <- Scorebest
   param_list[1] <- Scorebest
   if (length(Xbest) == dim) {
@@ -179,7 +178,7 @@ AO <- function(N, Max_iter, lb, ub, dim, fobj) {
       acc_norm <- matrix(l, nrow = N, ncol = dim) # Default value jika rentang nol
     }
 
-      # Update position phase
+    # Update position phase
     Xnew <- matrix(0, nrow = N, ncol = dim)
     for (i in 1:N) {
       if (TF <= 0.5) { # Update position for exploration phase

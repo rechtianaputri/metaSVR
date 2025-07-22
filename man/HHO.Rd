@@ -37,7 +37,7 @@ to optimized real-valued objective function in continous search space in a popul
 \details{
 There are two phase of Harris Hawks hunting, namely exploration and exploitation that will be modelized to find optimization result.
 The movement used in this algorithms such as: exploration phase; transition between exploitation and exploration phase; and exploitation phase
-that has 4 different strategies based on E and r (soft besiege, hard besiege, soft besiege with progressive rapid, and hard besiege with progressive rapid)
+that has 4 different strategies based on E and r (soft besiege, hard besiege, soft besiege with progressive rapid, and hard besiege with progressive rapid).
 
 The algorithm performs until maximum iteration reached or convergence condition when the difference
 in objective values for ten consecutive times is less than 10^-5.

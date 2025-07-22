@@ -14,19 +14,19 @@
 #' @param x_train A matrix or data frame contain predictors variable for training the model.
 #' @param y_train A numeric vector of target values for training model.
 #' @param x_test A matrix or data frame contain predictors variable for testing the model. It can be replaced by
-#' data validation to get the parameter if you separated the data as three categories.
+#' data validation to get the parameter if you separated the data as three categories and need more reliable model.
 #' @param y_test A numeric vector of target values for training model. It can be replaced by
-#' data validation to get the parameter if you separated the data as three categories.
-#' @param kernel SVR kernel type used for modelling. Options: "linear", "radial", "polynomial", and "sigmoid". Default is radial.
-#' @param optimizer Metaheuristic Algorithms selection, such as: "AO", "CBO", "AOCBO", "HHO", "GWO", "ALO", and "EHHOCBO". Default is AO.
-#' @param objective Objective function used for optimization as prediction quality measures. Options: "SMAPE", "MAPE", "RMSE", and "MAE". Default is RMSE.
+#' data validation to get the parameter if you separated the data as three categories and need more reliable model.
+#' @param kernel SVR kernel type used for modelling. Options: "linear", "radial", "polynomial", or "sigmoid". Default is radial.
+#' @param optimizer Metaheuristic Algorithms selection, options: "AO", "CBO", "AOCBO", "HHO", "GWO", "ALO", or "EHHOCBO". Default is AO.
+#' @param objective Objective function used for optimization as prediction quality measures. Options: "SMAPE", "MAPE", "RMSE", or "MAE". Default is RMSE.
 #' @param is.y.normalize Logical; use when prediction of target variable 'y' is on min-max scalling normalization. Default is FALSE. Note: It is only use when the data normalize by normalize() function in this package.
-#' @param min.y Minimum value of target (used for denormalization).
-#' @param max.y Maximum value of target (used for denormalization).
+#' @param min.y Minimum value of target (used for denormalization). No need to fill this parameter if y is not normalize.
+#' @param max.y Maximum value of target (used for denormalization). No need to fill this parameter if y is not normalize.
 #' @param max_iter Maximum number of iterations for the optimizer. Default is 100.
 #' @param N Population size for the optimizer. Default is 30.
-#' @param seed Random seed for reproducibility. Default is 123.
-#' @param degree Degree parameter for polynomial kernel.
+#' @param seed Random seed for reproducibility algorithm. Default is 123.
+#' @param degree Degree parameter for polynomial kernel.Default is 3.
 #' @param coef0 Coefficient parameter used in polynomial/sigmoid kernels.
 #' @param nu Parameter for 'nu-regression' to controlling max proportion of error training and minimum proportion of support vectors. Default is 0.5, range: 0.1-0.9.
 #' Only use if the type of regression choosen is 'nu-regression'.
@@ -38,7 +38,6 @@
 #' @param cross Number of folds for cross-validation. Default is 0, no cross validation.
 #' @param probability Logical; whether to enable probability model. Default is FALSE.
 #' @param fitted Logical; whether to keep fitted values. Default is TRUE.
-#' @param ... Additional arguments passed to `svm()`.
 #' @param subset Optional vector specifying subset of observations to be used in the training fit.
 #' @param na.action Function which indicates what should happen when the data contain NAs.
 #'
@@ -75,7 +74,7 @@ svrHybrid <- function(x_train, y_train,
                       cachesize = 40, tolerance = 0.001,
                       scale = TRUE, shrinking = TRUE,
                       cross = 0, probability = FALSE,
-                      fitted = TRUE, ..., subset,
+                      fitted = TRUE, subset,
                       na.action = na.omit) {
 
   # Data Validation: Error Message

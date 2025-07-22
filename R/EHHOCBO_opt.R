@@ -103,7 +103,8 @@ levyEHHOCBO <- function(dim) {
 #' Cui, H., Guo, Y., Xiao, Y., Wang, Y., Li, J., Zhang, Y., & Zhang, H. (2023). Enhanced Harris Hawks Optimization Integrated with Coot Bird Optimization for
 #' Solving Continuous Numerical Optimization Problems. CMES - Computer Modeling in Engineering and Sciences, 137(2), 1635–1675. https://doi.org/10.32604/cmes.2023.026019
 #'
-
+#' @export
+#'
 EHHOCBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   # Input Validation Checking
   if (!is.numeric(N) || length(N) != 1 || N <= 0 || N != as.integer(N)) {

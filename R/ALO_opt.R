@@ -181,7 +181,8 @@ RouletteWheelSelection <- function(weights){
 #' Mirjalili, S. (2015). The Ant Lion Optimizer. Advances in Engineering Software, 83, 80-98.
 #' https://doi.org/10.1016/j.advengsoft.2015.01.010.
 #'
-
+#' @export
+#'
 ALO <- function(N, Max_iter, lb, ub, dim, fobj){
   # Input Validation Checking
   if (!is.numeric(N) || length(N) != 1 || N <= 0 || N != as.integer(N)) {

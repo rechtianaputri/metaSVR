@@ -52,7 +52,8 @@
 #' Naruei, I., & Keynia, F. (2021). A New Optimization Method Based on COOT Bird Natural Life Model.
 #' Expert Systems with Applications, 183. https://doi.org/10.1016/j.eswa.2021.115352
 #'
-
+#' @export
+#'
 CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   # Input Validation Checking
   if (!is.numeric(N) || length(N) != 1 || N <= 0 || N != as.integer(N)) {

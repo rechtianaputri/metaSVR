@@ -29,7 +29,6 @@ svrHybrid(
   cross = 0,
   probability = FALSE,
   fitted = TRUE,
-  ...,
   subset,
   na.action = na.omit
 )
@@ -40,30 +39,30 @@ svrHybrid(
 \item{y_train}{A numeric vector of target values for training model.}
 
 \item{x_test}{A matrix or data frame contain predictors variable for testing the model. It can be replaced by
-data validation to get the parameter if you separated the data as three categories.}
+data validation to get the parameter if you separated the data as three categories and need more reliable model.}
 
 \item{y_test}{A numeric vector of target values for training model. It can be replaced by
-data validation to get the parameter if you separated the data as three categories.}
+data validation to get the parameter if you separated the data as three categories and need more reliable model.}
 
-\item{kernel}{SVR kernel type used for modelling. Options: "linear", "radial", "polynomial", and "sigmoid". Default is radial.}
+\item{kernel}{SVR kernel type used for modelling. Options: "linear", "radial", "polynomial", or "sigmoid". Default is radial.}
 
-\item{optimizer}{Metaheuristic Algorithms selection, such as: "AO", "CBO", "AOCBO", "HHO", "GWO", "ALO", and "EHHOCBO". Default is AO.}
+\item{optimizer}{Metaheuristic Algorithms selection, options: "AO", "CBO", "AOCBO", "HHO", "GWO", "ALO", or "EHHOCBO". Default is AO.}
 
-\item{objective}{Objective function used for optimization as prediction quality measures. Options: "SMAPE", "MAPE", "RMSE", and "MAE". Default is RMSE.}
+\item{objective}{Objective function used for optimization as prediction quality measures. Options: "SMAPE", "MAPE", "RMSE", or "MAE". Default is RMSE.}
 
 \item{is.y.normalize}{Logical; use when prediction of target variable 'y' is on min-max scalling normalization. Default is FALSE. Note: It is only use when the data normalize by normalize() function in this package.}
 
-\item{min.y}{Minimum value of target (used for denormalization).}
+\item{min.y}{Minimum value of target (used for denormalization). No need to fill this parameter if y is not normalize.}
 
-\item{max.y}{Maximum value of target (used for denormalization).}
+\item{max.y}{Maximum value of target (used for denormalization). No need to fill this parameter if y is not normalize.}
 
 \item{max_iter}{Maximum number of iterations for the optimizer. Default is 100.}
 
 \item{N}{Population size for the optimizer. Default is 30.}
 
-\item{seed}{Random seed for reproducibility. Default is 123.}
+\item{seed}{Random seed for reproducibility algorithm. Default is 123.}
 
-\item{degree}{Degree parameter for polynomial kernel.}
+\item{degree}{Degree parameter for polynomial kernel.Default is 3.}
 
 \item{coef0}{Coefficient parameter used in polynomial/sigmoid kernels.}
 
@@ -85,8 +84,6 @@ Only use if the type of regression choosen is 'nu-regression'.}
 \item{probability}{Logical; whether to enable probability model. Default is FALSE.}
 
 \item{fitted}{Logical; whether to keep fitted values. Default is TRUE.}
-
-\item{...}{Additional arguments passed to `svm()`.}
 
 \item{subset}{Optional vector specifying subset of observations to be used in the training fit.}
 

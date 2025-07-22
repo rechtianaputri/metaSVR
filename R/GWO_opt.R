@@ -79,7 +79,8 @@ initGWO <- function(N,dim,ub,lb) {
 #' Mirjalili, S., Mirjalili, S. M., & Lewis, A. (2014). Grey wolf optimizer.
 #' Advances in engineering software, 69, 46-61. https://doi.org/10.1016/j.advengsoft.2013.12.007
 #'
-
+#' @export
+#'
 GWO <- function(N,Max_iter,lb,ub,dim,fobj) {
   # Input Validation Checking
   if (!is.numeric(N) || length(N) != 1 || N <= 0 || N != as.integer(N)) {

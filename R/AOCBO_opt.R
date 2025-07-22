@@ -46,7 +46,8 @@
 #' result$best_fitness
 #' result$best_position
 #' }
-
+#' @export
+#'
 AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
   # Input Validation Checking
   if (!is.numeric(N) || length(N) != 1 || N <= 0 || N != as.integer(N)) {
@@ -100,7 +101,6 @@ AOCBO <- function(N, Max_iter, lb, ub, dim, fobj) {
     }
   }
 
-  # X <- matrix(lb + runif(N * dim) * (ub - lb), nrow = N, ncol = dim)
   den <- matrix(runif(N * dim), nrow = N, ncol = dim) # Eq. 5
   vol <- matrix(runif(N * dim), nrow = N, ncol = dim)
 

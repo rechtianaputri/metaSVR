@@ -79,7 +79,7 @@ levyHHO <- function(dim) {
 #' @details
 #' There are two phase of Harris Hawks hunting, namely exploration and exploitation that will be modelized to find optimization result.
 #' The movement used in this algorithms such as: exploration phase; transition between exploitation and exploration phase; and exploitation phase
-#' that has 4 different strategies based on E and r (soft besiege, hard besiege, soft besiege with progressive rapid, and hard besiege with progressive rapid)
+#' that has 4 different strategies based on E and r (soft besiege, hard besiege, soft besiege with progressive rapid, and hard besiege with progressive rapid).
 #'
 #' The algorithm performs until maximum iteration reached or convergence condition when the difference
 #' in objective values for ten consecutive times is less than 10^-5.
@@ -105,7 +105,8 @@ levyHHO <- function(dim) {
 #' Harris hawks optimization: Algorithm and applications. Future generation computer systems, 97, 849-872.
 #' https://doi.org/10.1016/j.future.2019.02.028
 #'
-
+#' @export
+#'
 HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
   # Input Validation Checking
   if (!is.numeric(N) || length(N) != 1 || N <= 0 || N != as.integer(N)) {
@@ -166,7 +167,6 @@ HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
         } else {
           X[i,] <- (rab_loc-colMeans(X))-(runif(1)%*%(lb+(runif(1)%*%(ub-lb))))
         }
-        ##
         FU <- X[i,] > ub
         FL <- X[i,] < lb
         X[i,] <- (X[i,]*as.numeric(!(FU+FL)))+ub*as.numeric(FU)+lb*as.numeric(FL)
@@ -174,21 +174,18 @@ HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
         r<- runif(1)
         if (r>= 0.5 & abs(esc_en) <0.5) {
           X[i,] <- (rab_loc)-esc_en%*%abs(rab_loc-X[i,])
-          ##
           FU <- X[i,]>ub
           FL <- X[i,]<lb
           X[i,] <- (X[i,]*as.numeric(!(FU+FL)))+ub*as.numeric(FU)+lb*as.numeric(FL)
         } else if (r >= 0.5 & abs(esc_en) >= 0.5) {
           jump_str <- 2%*%(1-runif(1))
           X[i,] <- (rab_loc-X[i,])-esc_en%*%abs(jump_str%*%rab_loc-X[i,])
-          ##
           FU <- X[i,]>ub
           FL <- X[i,]<lb
           X[i,] <- (X[i,]*as.numeric(!(FU+FL)))+ub*as.numeric(FU)+lb*as.numeric(FL)
         } else if (r <0.5 & abs(esc_en)>=0.5) {
           jump_str <- 2%*%(1-runif(1))
           X1 <- rab_loc-esc_en%*%abs(jump_str%*%rab_loc-X[i,])
-          ##
           FU <- X1 > ub
           FL <- X1 <lb
           X1 <- (X1*as.numeric(!(FU+FL)))+ub*as.numeric(FU)+lb*as.numeric(FL)
@@ -197,7 +194,6 @@ HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
           } else {
             X2 <- rab_loc-esc_en%*%abs(jump_str%*%rab_loc-X[i,])+
               runif(dim)*levyHHO(dim)
-            ##
             FU <- X2 > ub
             FL <- X2 <lb
             X2 <- (X2*as.numeric(!(FU+FL)))+ub*as.numeric(FU)+lb*as.numeric(FL)
@@ -209,7 +205,6 @@ HHO <- function(N,Max_iter,lb,ub,dim,fobj) {
         } else {
           jump_str <- 2%*% (1-runif(1))
           X1 <- rab_loc-esc_en%*%abs(jump_str%*%rab_loc-colMeans(X))
-          ##
           FU <- X1 > ub
           FL <- X1 < lb
           X1 <- (X1*as.numeric(!(FU+FL)))+ub*as.numeric(FU)+lb*as.numeric(FL)
