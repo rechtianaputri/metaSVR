@@ -88,12 +88,12 @@ levyHHO <- function(dim) {
 #' @note This optimization function used inside svrHybrid function.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' sphere_fn <- function(x) sum(x^2) # simple function for objective function
 #'
 #' # HHO optimization
 #' set.seed(123)
-#' result <- HHO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+#' result <- HHO(N = 20, Max_iter = 50, lb = c(-5,-5,-5), ub = c(5,5,5), dim = 3, fobj = sphere_fn)
 #'
 #' # View best fitness and position found
 #' result$best_fitness

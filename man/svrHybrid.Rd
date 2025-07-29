@@ -106,7 +106,7 @@ Harris Hawks Optimization (HHO), Grey Wolf Optimizer (GWO), Ant Lion Optimizatio
 and Enhanced Harris Hawks Optimization with Coot Bird Optimization (EHHOCBO).
 }
 \examples{
-\dontrun{
+{
 set.seed(1)
 x <- matrix(rnorm(100), ncol = 2)
 y <- x[,1] * 3 + rnorm(50)
@@ -114,6 +114,7 @@ model <- svrHybrid(x_train = x[1:40,], y_train = y[1:40],
                    x_test = x[41:50,], y_test = y[41:50],
                    kernel = "radial", optimizer = "AO",
                    objective = "RMSE", is.y.normalize = FALSE)
+# To
 model$best_params
 }
 

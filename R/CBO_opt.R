@@ -36,12 +36,12 @@
 #' This optimization function used inside svrHybrid function.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' sphere_fn <- function(x) sum(x^2) # simple function for objective function
 #'
 #' # CBO optimization
 #' set.seed(123)
-#' result <- CBO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+#' result <- CBO(N = 20, Max_iter = 50, lb = c(-5,-5,-5), ub = c(5,5,5), dim = 3, fobj = sphere_fn)
 #'
 #' # View best fitness and position found
 #' result$best_fitness
@@ -91,7 +91,7 @@ CBO <- function(N,Max_iter,lb,ub,dim,fobj) {
   nLeader <- ceiling(0.1*N)
   nCoot <- N-nLeader
   objective_history <- matrix(0L, nrow= Max_iter, ncol= 1)
-  param_list <<- matrix(0L, nrow = 1, ncol=Max_iter)
+  param_list <- matrix(0L, nrow = 1, ncol=Max_iter)
   param <- NULL
   gBest <- matrix(0L, nrow = 1, ncol= dim)
   gBestScore <- Inf

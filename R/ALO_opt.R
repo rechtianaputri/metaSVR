@@ -165,12 +165,12 @@ RouletteWheelSelection <- function(weights){
 #' This optimization function used inside svrHybrid function.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' sphere_fn <- function(x) sum(x^2) # simple function for objective function
 #'
 #' # ALO optimization
 #' set.seed(123)
-#' result <- ALO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+#' result <- ALO(N = 20, Max_iter = 50, lb = c(-5,-5,-5), ub = c(5,5,5), dim = 3, fobj = sphere_fn)
 #'
 #' # View best fitness and position found
 #' result$best_fitness

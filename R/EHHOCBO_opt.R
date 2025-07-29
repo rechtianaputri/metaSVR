@@ -39,7 +39,7 @@ initEHHOCBO <- function(N, dim, ub,lb){
 #'
 #' @return A numeric vector of length \code{dim} representing the Lévy flight step.
 #'
-#' #' @note
+#' @note
 #' This function used inside EHHOCBO function to generate random Levy Flight vector.
 
 levyEHHOCBO <- function(dim) {
@@ -87,12 +87,12 @@ levyEHHOCBO <- function(dim) {
 #' @note This optimization function used inside svrHybrid function.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' sphere_fn <- function(x) sum(x^2) # simple function for objective function
 #'
 #' # EHHOCBO optimization
 #' set.seed(123)
-#' result <- EHHOCBO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+#' result <- EHHOCBO(N = 20, Max_iter = 50, lb = c(-5,-5,-5), ub = c(5,5,5), dim = 3, fobj = sphere_fn)
 #'
 #' # View best fitness and position found
 #' result$best_fitness

@@ -47,12 +47,12 @@ The input vectors 'lb' and 'ub' must have the same length as the number of dimen
 This optimization function used inside svrHybrid function.
 }
 \examples{
-\dontrun{
+{
 sphere_fn <- function(x) sum(x^2) # simple function for objective function
 
 # GWO optimization
 set.seed(123)
-result <- GWO(N = 20, Max_iter = 50, lb = [-5,-5,-5], ub = [5,5,5], dim = 3, fobj = sphere_fn)
+result <- GWO(N = 20, Max_iter = 50, lb = c(-5,-5,-5), ub = c(5,5,5), dim = 3, fobj = sphere_fn)
 
 # View best fitness and position found
 result$best_fitness
