@@ -15,6 +15,8 @@ big dataset and to do task where required optimal performance, such as
 forecasting renewable energy production, forecasting air pollutant, or
 modelling any regression that involve nonlinear patterns.
 
+This package is an artifact produced from the thesis titled "Implementasi Model Archimedes Optimization and Coot Bird Optimization with Support Vector Regression dalam Prediksi Kapasitas Energi Surya ASEAN" by Rechtiana Putri Arini (222112310), under the supervision of Robert Kurniawan, S.S.T., M.Si.
+
 ## Features
 
 Features provided in this package include:
@@ -47,12 +49,14 @@ Features provided in this package include:
 
 ## Installation
 
-You can install the development version of metaSVR from
-[GitHub](https://github.com/) with:
+You can install the development version of metaSVR with:
 
 ``` r
-# install.packages("devtools")
+# From GitHub (recommended for public)
 devtools::install_github("rechtianaputri/metaSVR")
+
+# From Git STIS (for internal/campus use)
+remotes::install_gitlab("222112336/metaSVR", host = "git.stis.ac.id")
 ```
 
 ## Example
