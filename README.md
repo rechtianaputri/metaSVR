@@ -15,8 +15,6 @@ big dataset and to do task where required optimal performance, such as
 forecasting renewable energy production, forecasting air pollutant, or
 modelling any regression that involve nonlinear patterns.
 
-This package is an artifact produced from the thesis titled "Implementasi Model Archimedes Optimization and Coot Bird Optimization with Support Vector Regression dalam Prediksi Kapasitas Energi Surya ASEAN" by Rechtiana Putri Arini (222112310), under the supervision of Robert Kurniawan, S.S.T., M.Si.
-
 ## Features
 
 Features provided in this package include:
