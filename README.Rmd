@@ -24,8 +24,6 @@ This package can be used to do prediction using SVR for either small or big data
 
 This package is an artifact produced from the thesis titled "Implementasi Model Archimedes Optimization and Coot Bird Optimization with Support Vector Regression dalam Prediksi Kapasitas Energi Surya ASEAN" by Rechtiana Putri Arini (222112310), under the supervision of Robert Kurniawan, S.S.T., M.Si. This project contains not only the components for building the `metaSVR` R-Package, but also the documentation on the usage of the R-Package and the functions provided within `metaSVR`. It is also accompanied by data files and processing code for modeling the Prediction of ASEAN Solar Energy Capacity, located in the 'File Pengolahan Pemodelan' folder.    
 
-This package is an artifact produced from the thesis titled "Implementasi Model Archimedes Optimization and Coot Bird Optimization with Support Vector Regression dalam Prediksi Kapasitas Energi Surya ASEAN" by Rechtiana Putri Arini (222112310), under the supervision of Robert Kurniawan, S.S.T., M.Si.
-
 ## Features
 
 
