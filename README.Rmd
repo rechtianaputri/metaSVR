@@ -51,11 +51,14 @@ Features provided in this package include:
 
 ## Installation
 
-You can install the development version of metaSVR from [GitHub](https://github.com/) with:
+You can install the development version of metaSVR with: 
 
 ``` r
-# install.packages("devtools")
+# From GitHub (recommended for public)
 devtools::install_github("rechtianaputri/metaSVR")
+
+# From Git STIS (for internal/campus use)
+remotes::install_gitlab("222112336/metaSVR", host = "git.stis.ac.id")
 ```
 
 ## Example
