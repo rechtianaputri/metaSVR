@@ -1,0 +1,15 @@
+metaSVR_cite <- bibentry(
+  bibtype = "Manual",
+  title = "metaSVR: Support Vector Regression with Metaheuristic Algorithms Optimization",
+  author = c(
+    person(given = c("Rechtiana", "Putri"), family = "Arini"),
+    person(given = "Robert", family = "Kurniawan"),
+    person(given = c("I", "Nyoman"), family = "Setiawan"),
+    person(given = c("Zulhan", "Andika"), family = "Asyraf")
+  ),
+  year = "2025",
+  note = "R package version 0.1.0",
+  url = "https://github.com/rechtianaputri/metaSVR"
+)
+
+metaSVR_cite
